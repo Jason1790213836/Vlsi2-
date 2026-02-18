@@ -30,30 +30,39 @@ initial begin
 
 		if(Y==D0)begin
 			if(en!=0 && sel==0)begin
-				$display("hell yeah your output is passed ");
-			
-			end else $display("wrong answer");
-
+				$display("case passed ");
+			end else begin 
+				$display("@@@FAIL");
+				$finish;
+				end
 		end else if (Y==D1)begin
 			if(en!=0 && sel==1)begin
-				$display("hell yeah your output is passed ");
-			end else $display("wrong answer");
+				$display("case passed");
+			end else begin 
+				$display("@@@FAIL");
+				$finish;
+			end
 		end	else if(Y==4'b0000) begin
 
 			if(en==0)begin
-                                $display("hell yeah your output is passed ");
-                        end else $display("wrong answer");
-
+                                $display("case passed");
+				
+			end else begin
+			       	$display("@@@FAIL");
+				$finish;
+			end
+		end else begin
+				$display("@@@FAIL");
+				$finish;
 		end
-		
+	
 
 
 	end
 
 	
 
-	$display("finished testing");
-	$display("----------------------");
+	$display("@@@PASS");
 	$finish;
 
 

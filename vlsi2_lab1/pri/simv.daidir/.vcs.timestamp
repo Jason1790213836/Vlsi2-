@@ -1,0 +1,146 @@
+0
+34
++itf+/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/eda/synopsys/vcs/U-2023.03-SP2-5/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvirsim.so /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/eda/synopsys/vcs/U-2023.03-SP2-5/include
+-Mxllcflags=
+-P
+-Xufe=2steps
+-debug_access+all
+-fsdb
+-full64
+-gen_obj
+-kdb
+-lca
+-picarchive
+-sverilog
+/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/vcs1
+/eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
+pri_en.sv
+pri_en_tb.sv
+95
+base_dir=/eda/cadence/
+XMODIFIERS=@im=ibus
+XILINX=/eda/xilinx/
+XDG_SESSION_ID=2726
+XDG_RUNTIME_DIR=/run/user/4531049
+XDG_MENU_PREFIX=gnome-
+XDG_CURRENT_DESKTOP=GNOME
+XA_HOME=/eda/synopsys/xa/W-2024.09-SP1
+WV_HOME=/eda/synopsys/wv/R-2020.12-4
+VTE_VERSION=5204
+VMR_MODE_FLAG=64
+VERDI_HOME=/eda/synopsys/verdi/U-2023.03-SP2-5
+VENDOR=unknown
+VC_STATIC_HOME=/eda/synopsys/vc_static/U-2023.03-SP2-5
+VCS_PYTHON3=/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/Python-3.6.1/bin/python3
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/eda/synopsys/vcs/U-2023.03-SP2-5
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USE_CALIBRE_VCO=aok
+UNAME=/bin/uname
+TXS=/eda/synopsys/txs/U-2022.12-SP4
+TOOL_HOME=/eda/synopsys/vcs/U-2023.03-SP2-5/linux64
+SYN_HOME=/eda/synopsys/syn/U-2022.12-SP7-3
+SUBSTRATESTORMSITE=/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib
+SUBSTRATESTORMHOME=/eda/cadence/ASSURA
+SSH_CLIENT=127.0.0.1 48638 3322
+SSH_AUTH_SOCK=/run/user/4531049/keyring/ssh
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+SNPS_VCS_PYTHON3=/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/Python-3.6.1/bin/python3
+SNPS_VCS_CLANG_PATH=/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3455808,unix/unix:/tmp/.ICE-unix/3455808
+SENTAURUS=/eda/synopsys/sentaurus/U-2022.12-SP1
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
+PVSHOME=/eda/cadence/PVS231
+PSIM=/eda/synopsys/primesim/U-2023.03-2
+PRIME_WAVE=/eda/synopsys/primewave/V-2023.12-SP1-3
+PRIME=/eda/synopsys/prime/T-2022.03-SP5-1
+PDK_DIR=/ALL_PDK/asap7PDK_r1p7/asap7/asap7PDK_r1p7
+PCM_STUDIO=/eda/synopsys/pcm_studio/U-2023.06
+OVA_UUM=0
+OSTYPE=linux
+OA_HOME=/eda/cadence/IC618/oa_v22.60.092
+MODULES_USE_COMPAT_VERSION=0
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MMSIM_HOME=/eda/cadence/SPECTRE231/tools.lnx86
+MGLS_LICENSE_FILE=1717@pyke.poly.edu
+MGC_HOME=/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home
+MGC_CALIBRE_PEX_RUNSET_FILE=./.runset.calibre.pex
+MGC_CALIBRE_LVS_RUNSET_FILE=./.runset.calibre.lvs
+MGC_CALIBRE_DRC_RUNSET_FILE=./.runset.calibre.drc
+MATLAB_USE_USERPATH=1
+LOADEDMODULES=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_HOME=/eda/synopsys/lc/W-2024.09
+LC_ALL=C
+ICC_HOME=/eda/synopsys/icc2/T-2022.03-SP2-1
+HSP_HOME=/eda/synopsys/hspice/V-2023.12-SP1-1
+HOSTTYPE=x86_64-linux
+GROUP=lx2349
+GNOME_TERMINAL_SERVICE=:1.74
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/ac9ccfe9_8315_4caa_8ce5_e91a781292d6
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GJS_DEBUG_OUTPUT=stderr
+FASTX_SESSION_ID=30834f9a528a4d7c9148e200c43368b9
+FASTX_SESSION_DIR=/home/lx2349/.fastx_server/ecs04.poly.edu/sessions/FX3-30834f9a528a4d7c9148e200c43368b9
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-hUZv9kAciF,guid=40ac736de6db4b062676d8fa69952a0b
+COLORTERM=truecolor
+CLS_CDSD_COMPATIBILITY_LOCKING=NO
+CDS_SITE=/eda/cadence/local
+CDS_Netlisting_Mode=Analog
+CDS_LIC_FILE=5281@pyke.poly.edu:/opt/cadence/License/cadence.lic
+CDS_HOME=/eda/cadence/IC618
+CDS_DIR=/eda/cadence/IC618/tools
+CDS_AUTO_64BIT=ALL
+CDSROOT=/eda/cadence/IC618
+CDSHOME=/eda/cadence/IC618
+CDS=/eda/cadence/
+CDK_DIR=/eda/cadence/local/ncsu-cdk-1.6.0.beta
+CC_HOME=/eda/synopsys/customcompiler/V-2023.12-SP1-3
+CALIBRE_HOME=/eda/mentor/Calibre/aok_cal_2024.2_29.16
+ASSURAHOME=/eda/cadence/ASSURA
+0
+0
+4
+1771383714 pri_en_tb.sv
+1771384422 pri_en.sv
+1713174949 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
+1713323180 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
+4
+1713324643 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvirsim.so
+1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
+1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
+1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
+1771384432 simv.daidir
+-1 partitionlib
