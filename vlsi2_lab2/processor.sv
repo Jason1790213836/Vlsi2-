@@ -30,19 +30,13 @@ input logic [1:0] parity,
 output logic [7:0] status
 );
 
-always_ff @(posedge clk)begin
-	if(rstN==0)begin
-		status<=8'b00000000;
-	end else begin
-		status[7]<=int_en;
-		status[6:5]<=2'b11;
-		status[4]<=zero;
-		status[3]<=carry;
-		status[2]<=neg;
-		status[1:0]<=parity;
-	end
+always_ff @(posedge clk) begin
+    if (!rstN)
+        status <= 8'b0;
+    else
+        status <= {int_en, 2'b11, zero, carry, neg, parity};
+end	
 
-end
 endmodule
 
 module Pri_En(

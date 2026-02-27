@@ -5,11 +5,11 @@
         "module",
         1
     ],
-    "processor_tb": [
-        "processor_tb",
-        "vR1kv",
+    "adder_tb": [
+        "adder_tb",
+        "tqbtF",
         "module",
-        3
+        2
     ],
     "...MASTER...": [
         "SIM",
