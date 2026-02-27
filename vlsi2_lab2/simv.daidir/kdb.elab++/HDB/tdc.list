@@ -1,2 +1,2 @@
-adder.sv
-adder_tb.sv
+processor.sv
+processor_tb.sv

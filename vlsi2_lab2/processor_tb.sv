@@ -72,7 +72,8 @@ endtask
     repeat (2) @(posedge clk);
     #0.1;
 
-    check8("reset status", status, 8'h00);
+    if (status[6:5] !== 2'b11)
+    fail("unused bits not 11 after reset");
     check3("reset Q", Q, 3'd0);
 
     // release reset

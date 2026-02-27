@@ -32,7 +32,7 @@ output logic [7:0] status
 
 always_ff @(posedge clk) begin
     if (!rstN)
-        status <= 8'b0;
+        status <= 8'b01100000;
     else
         status <= {int_en, 2'b11, zero, carry, neg, parity};
 end	
