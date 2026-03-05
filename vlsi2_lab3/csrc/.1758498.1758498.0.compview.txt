@@ -1,0 +1,5 @@
+{"vcs1":{"timestamp_begin":1772749872.084124526, "rt":0.19, "ut":0.08, "st":0.06}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1772749870.958619550}
+{"VCS_COMP_START_TIME": 1772749870.958619550}
+{"VCS_COMP_END_TIME": 1772749872.404311643}
+{"VCS_USER_OPTIONS": "-full64 -kdb -sverilog traffic_light_controller.sv traffic_light_controller_tb.sv -lca -debug_access+all"}
