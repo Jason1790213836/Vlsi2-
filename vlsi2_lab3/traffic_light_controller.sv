@@ -18,7 +18,7 @@ state_e state,state_next;
 always_ff@(posedge clk or posedge reset) begin
 // Block 1: Reset and State Update
 	if(reset) begin
-		state<=ST_EW_Y;
+		state<=ST_NS_G;
 	end else begin
 		state<=state_next;
 	end
@@ -27,13 +27,11 @@ always_comb begin
 	state_next=state;
 	light_NS = 2'b00;
 	light_EW = 2'b00;
-
 	if(reset)begin
-		light_NS = 2'b00;
-		light_EW = 2'b00;
-		state_next = ST_EW_Y;
+		        light_NS = 2'b00;
+        light_EW = 2'b00;
 	end else begin
-		unique case(state)
+	unique case(state)
 			ST_NS_G: begin
 				light_NS = 2'b10;
 				light_EW = 2'b00;
