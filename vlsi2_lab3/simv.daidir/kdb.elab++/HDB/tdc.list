@@ -1,3 +1,2 @@
-fsm.sv
-fsm_pkg.svh
-fsm_tb.sv
+traffic_light_controller.sv
+traffic_light_controller_tb.sv
