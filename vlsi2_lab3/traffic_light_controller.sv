@@ -28,11 +28,11 @@ always_comb begin
 	light_NS = 2'b00;
 	light_EW = 2'b00;
 	if(reset)begin
-		light_NS = 2'b00;
-		light_EW =2'b00;
-		state_next=ST_NS_G;
-	end else begin	
-		unique case(state)
+	light_NS = 2'b00;
+        light_EW = 2'b00;
+	state_next = ST_NS_G;
+	end else begin
+	unique case(state)
 			ST_NS_G: begin
 				light_NS = 2'b10;
 				light_EW = 2'b00;
@@ -58,7 +58,7 @@ always_comb begin
                 	default: begin
                    		 light_NS   = 2'b00;
                     		 light_EW   = 2'b00;
-                  	  	state_next = ST_NS_G;
+                  	  	state_next = ST_EW_Y;
                 	end
 		endcase
 
