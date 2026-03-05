@@ -1,113 +1,78 @@
-`include ”fsm˙pkg.svh”
-import fsm10˙pkg::*;
+`include "fsm_pkg.svh"
+import fsm10_pkg::*;
+
 module fsm(
-input logic rst˙n, // asynchronous active-low reset
-input logic clk,
-input logic jmp,
-input logic go,
-output logic y,
-output state˙e state
+    input  logic   rst_n,   // asynchronous active-low reset
+    input  logic   clk,
+    input  logic   jmp,
+    input  logic   go,
+    output logic   y,
+    output state_e state
 );
 
-	always_ff@(posedge clk or negedge rst_n)begin
-		if(!rst_n)begin
-			state<=state.S0;
-			y<=0;
-		end
-		case(state)
-			state.S0:begin
-				 if(!go)begin
-					state<=state.S0;
-					y<=0;
-				 end else if (go==1&&!jmp)begin
-					state<=state.S1;
-					y<=0;
-				 end else if (go==1&&jmp)begin
-					state<=state.S3;
-					y<=1;
-				 end
-			end
-                        state.S1:begin
-                          	 if (!jmp)begin
-                                        state<=state.S2;
-                                        y<=0;
-                                 end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                 end
-                        end
-                        state.S2:begin
-                              
-                                        state<=state.S3;
-                                        y<=1;
-                          
-                        end
-                        state.S3:begin
-                                if (!jmp)begin
-                                        state<=state.S4;
-                                        y<=0;
+    // Moore output: y depends only on state (y=1 only in S3)
+    assign y = (state == S3);
 
-                        end
-                        state.S4:begin
-                                if (!jmp)begin
-                                        state<=state.S5;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-                        state.S5:begin
-                                if (!jmp)begin
-                                        state<=state.S6;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-                        state.S6:begin
-                                if (!jmp)begin
-                                        state<=state.S7;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-                        state.S7:begin
-                               if (!jmp)begin
-                                        state<=state.S8;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-                        state.S8:begin
-                       		if (!jmp)begin
-                                        state<=state.S9;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-                        state.S9:begin
-                                if (!jmp)begin
-                                        state<=state.S0;
-                                        y<=0;
-                                end else if (jmp)begin
-                                        state<=state.S3;
-                                        y<=1;
-                                end
-                        end
-			default: begin stat3<=0; 
-					y<=0
-				 end
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state <= S0;
+        end else begin
+            unique case (state)
+                S0: begin
+                    if (!go)       state <= S0;
+                    else if (!jmp) state <= S1;
+                    else           state <= S3;  // go & jmp
+                end
 
-		endcase
+                S1: begin
+                    if (!jmp) state <= S2;
+                    else      state <= S3;
+                end
 
-	end
-// Implement the design
+                S2: begin
+                    state <= S3;
+                end
+
+                S3: begin
+                    if (!jmp) state <= S4;
+                    else      state <= S3;  // jmp stays in S3
+                end
+
+                S4: begin
+                    if (!jmp) state <= S5;
+                    else      state <= S3;
+                end
+
+                S5: begin
+                    if (!jmp) state <= S6;
+                    else      state <= S3;
+                end
+
+                S6: begin
+                    if (!jmp) state <= S7;
+                    else      state <= S3;
+                end
+
+                S7: begin
+                    if (!jmp) state <= S8;
+                    else      state <= S3;
+                end
+
+                S8: begin
+                    if (!jmp) state <= S9;
+                    else      state <= S3;
+                end
+
+                S9: begin
+                    if (!jmp) state <= S0;
+                    else      state <= S3;
+                end
+
+                default: begin
+                    state <= S0;
+                end
+            endcase
+        end
+    end
+
 endmodule
