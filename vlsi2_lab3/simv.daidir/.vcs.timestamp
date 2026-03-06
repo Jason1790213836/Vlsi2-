@@ -32,8 +32,8 @@
 -sverilog
 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/vcs1
 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
-traffic_light_controller.sv
-traffic_light_controller_tb.sv
+fsm.sv
+fsm_tb.sv
 95
 base_dir=/eda/cadence/
 XMODIFIERS=@im=ibus
@@ -132,9 +132,10 @@ CALIBRE_HOME=/eda/mentor/Calibre/aok_cal_2024.2_29.16
 ASSURAHOME=/eda/cadence/ASSURA
 0
 0
-4
-1772757399 traffic_light_controller_tb.sv
-1772757410 traffic_light_controller.sv
+5
+1772739562 fsm_pkg.svh
+1772744772 fsm_tb.sv
+1772767743 fsm.sv
 1713174949 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
 1713323180 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
 4
@@ -142,5 +143,5 @@ ASSURAHOME=/eda/cadence/ASSURA
 1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
 1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
 1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
-1772757416 simv.daidir
+1772767775 simv.daidir
 -1 partitionlib
