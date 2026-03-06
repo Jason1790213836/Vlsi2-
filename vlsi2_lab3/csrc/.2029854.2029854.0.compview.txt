@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1772751445.825256409, "rt":0.74, "ut":0.30, "st":0.31}}
+{"vcselab":{"timestamp_begin":1772751446.808271230, "rt":0.45, "ut":0.21, "st":0.14}}
+{"link":{"timestamp_begin":1772751447.437195579, "rt":0.56, "ut":0.24, "st":0.22}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1772751444.719059497}
+{"VCS_COMP_START_TIME": 1772751444.719059497}
+{"VCS_COMP_END_TIME": 1772751448.534988237}
+{"VCS_USER_OPTIONS": "-full64 -kdb -sverilog traffic_light_controller.sv traffic_light_controller_tb.sv -lca -debug_access+all"}
+{"vcs1": {"peak_mem": 552688}}
+{"vcselab": {"peak_mem": 254932}}

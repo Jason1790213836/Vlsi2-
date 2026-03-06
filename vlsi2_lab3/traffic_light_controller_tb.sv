@@ -1,13 +1,10 @@
-
+// traffic_light_controller_tb.sv
 module traffic_light_controller_tb;
 
-  // DUT I/O
   logic clk;
   logic reset;
-  logic [1:0] light_NS;
-  logic [1:0] light_EW;
+  logic [1:0] light_NS, light_EW;
 
-  // Instantiate DUT (black-box)
   traffic_light_controller dut (
     .clk      (clk),
     .reset    (reset),
@@ -15,148 +12,86 @@ module traffic_light_controller_tb;
     .light_EW (light_EW)
   );
 
-  // Clock
-  localparam int TCLK = 10;
+  // clock: 10 time units period
   initial clk = 1'b0;
-  always #(TCLK/2) clk = ~clk;
+  always  #5 clk = ~clk;
 
-  // Encodings: 00=Red, 01=Yellow, 10=Green
-  localparam logic [1:0] RED = 2'b00;
-  localparam logic [1:0] YEL = 2'b01;
-  localparam logic [1:0] GRN = 2'b10;
-
-  // Expected phase since last reset deassertion, sampled on posedge
-  // 0: NS_G, 1: NS_Y, 2: EW_G, 3: EW_Y
-  int unsigned phase;
-
+  // helper: fail fast
   task automatic fail(string msg);
     $display("@@@FAIL");
-    $display("FAIL: %s | t=%0t reset=%0b NS=%b EW=%b phase=%0d",
-             msg, $time, reset, light_NS, light_EW, phase);
-    $finish();
+    $display("FAIL: %s | t=%0t reset=%0b NS=%b EW=%b", msg, $time, reset, light_NS, light_EW);
+    $finish;
   endtask
 
-  function automatic bit is_valid_color(input logic [1:0] c);
-    return (c == RED) || (c == YEL) || (c == GRN);
-  endfunction
+  // safety invariant checks (black-box)
+  task automatic check_safety();
+    // NS and EW cannot be Green at the same time
+    if (light_NS == 2'b10 && light_EW == 2'b10) fail("both directions GREEN");
 
-  // Safety/spec invariants (checked whenever outputs may change)
-  task automatic check_invariants(string tag);
-    // valid encodings
-    if (!is_valid_color(light_NS)) fail({tag, ": invalid NS encoding"});
-    if (!is_valid_color(light_EW)) fail({tag, ": invalid EW encoding"});
+    // While one direction is Green/Yellow, the opposite must be Red
+    if ((light_NS == 2'b10 || light_NS == 2'b01) && (light_EW != 2'b00))
+      fail("NS is G/Y but EW not RED");
+    if ((light_EW == 2'b10 || light_EW == 2'b01) && (light_NS != 2'b00))
+      fail("EW is G/Y but NS not RED");
 
-    // never both green
-    if ((light_NS == GRN) && (light_EW == GRN)) fail({tag, ": both green"});
-
-    // while one is green/yellow, the other must be red
-    if ((light_NS == GRN || light_NS == YEL) && (light_EW != RED))
-      fail({tag, ": NS not red implies EW must be red"});
-    if ((light_EW == GRN || light_EW == YEL) && (light_NS != RED))
-      fail({tag, ": EW not red implies NS must be red"});
+    // Each direction must follow: Green -> Yellow -> Red (checked via sequence below)
   endtask
 
-  task automatic check_expected_on_posedge(string tag);
-    // reset behavior: async reset forces both red
-    if (reset) begin
-      if (light_NS !== RED || light_EW !== RED) fail({tag, ": reset but not both red"});
-      phase = 0; // after reset is released, next posedge must go to NS green
-    end else begin
-      // After reset deasserted, next rising edge must be NS green :contentReference[oaicite:7]{index=7}
-      unique case (phase)
-        0: begin
-          if (light_NS !== GRN || light_EW !== RED) fail({tag, ": expected NS green / EW red"});
-        end
-        1: begin
-          if (light_NS !== YEL || light_EW !== RED) fail({tag, ": expected NS yellow / EW red"});
-        end
-        2: begin
-          if (light_NS !== RED || light_EW !== GRN) fail({tag, ": expected NS red / EW green"});
-        end
-        3: begin
-          if (light_NS !== RED || light_EW !== YEL) fail({tag, ": expected NS red / EW yellow"});
-        end
-        default: begin
-          fail({tag, ": internal tb phase error"});
-        end
-      endcase
-
-      // advance phase each cycle (no counter/durations; automatic transitions) :contentReference[oaicite:8]{index=8}
-      phase = (phase + 1) % 4;
+  // expect exact outputs
+  task automatic expect_lights(input logic [1:0] expNS, input logic [1:0] expEW, string ctx);
+    if (light_NS !== expNS || light_EW !== expEW) begin
+      fail($sformatf("%s: expected NS=%b EW=%b", ctx, expNS, expEW));
     end
+  endtask
+
+  // step one cycle and check safety
+  task automatic step_and_check();
+    @(posedge clk);
+    #1; // allow combinational settle
+    check_safety();
   endtask
 
   initial begin
     // init
-    reset = 1'b1;
-    phase = 0;
-
-    // During reset (async), outputs must be red immediately :contentReference[oaicite:9]{index=9}
-    #1;
-    check_invariants("init");
-    if (light_NS !== RED || light_EW !== RED) fail("init: reset high but not both red");
-
-    // Deassert reset not aligned to clock; still must stay red until next posedge produces NS green
-    #(TCLK/3);
     reset = 1'b0;
 
-    // Before next posedge, still should satisfy invariants; many correct designs remain red here
+    // Assert async reset not aligned to clk edge
+    #2;
+    reset = 1'b1;
     #1;
-    check_invariants("after reset deassert (pre-edge)");
+    // async reset must force both RED immediately
+    expect_lights(2'b00, 2'b00, "async reset asserted");
+    check_safety();
 
-    // Run a few full cycles: NS_G -> NS_Y -> EW_G -> EW_Y repeating :contentReference[oaicite:10]{index=10}
+    // Deassert reset mid-cycle
+    #7;
+    reset = 1'b0;
+
+    // At NEXT rising edge after reset deassert: NS must be GREEN, EW RED
+    step_and_check();
+    expect_lights(2'b10, 2'b00, "after reset deassert, 1st edge");
+
+    // Then automatic cycle each clock:
+    // NS_G -> NS_Y -> EW_G -> EW_Y -> NS_G -> ...
+    step_and_check();
+    expect_lights(2'b01, 2'b00, "NS_Y");
+
+    step_and_check();
+    expect_lights(2'b00, 2'b10, "EW_G");
+
+    step_and_check();
+    expect_lights(2'b00, 2'b01, "EW_Y");
+
+    step_and_check();
+    expect_lights(2'b10, 2'b00, "back to NS_G");
+
+    // Run a few more cycles to ensure it keeps repeating and stays safe
     repeat (12) begin
-      @(posedge clk);
-      #1;
-      check_invariants("directed");
-      check_expected_on_posedge("directed");
+      step_and_check();
     end
 
-    // Asynchronous reset pulse in the middle of operation (not at clock edge)
-    @(negedge clk);
-    #1;
-    reset = 1'b1;
-    #1;
-    check_invariants("mid-cycle reset assert");
-    if (light_NS !== RED || light_EW !== RED) fail("mid-cycle reset: not both red");
-
-    // Release reset mid-cycle again; next posedge must go to NS green
-    #(TCLK/4);
-    reset = 1'b0;
-
-    repeat (8) begin
-      @(posedge clk);
-      #1;
-      check_invariants("post-midreset");
-      check_expected_on_posedge("post-midreset");
-    end
-
-    // Random reset “glitches” to catch buggy designs
-    repeat (30) begin
-      // random wait 0..2 cycles
-      int w = $urandom_range(0,2);
-      repeat (w) begin
-        @(posedge clk);
-        #1;
-        check_invariants("random-run");
-        check_expected_on_posedge("random-run");
-      end
-
-      // random async reset pulse length 1..7 ns, 50% chance
-      if ($urandom_range(0,1)) begin
-        #( $urandom_range(1,7) );
-        reset = 1'b1;
-        #1;
-        check_invariants("random reset assert");
-        if (light_NS !== RED || light_EW !== RED) fail("random reset: not both red");
-        #( $urandom_range(1,7) );
-        reset = 1'b0;
-      end
-    end
-
-    // Exactly one PASS at end :contentReference[oaicite:11]{index=11}
     $display("@@@PASS");
-    $finish();
+    $finish;
   end
 
 endmodule

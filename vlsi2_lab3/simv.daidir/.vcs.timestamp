@@ -133,8 +133,8 @@ ASSURAHOME=/eda/cadence/ASSURA
 0
 0
 4
-1772748590 traffic_light_controller_tb.sv
-1772750662 traffic_light_controller.sv
+1772757399 traffic_light_controller_tb.sv
+1772757410 traffic_light_controller.sv
 1713174949 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
 1713323180 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
 4
@@ -142,5 +142,5 @@ ASSURAHOME=/eda/cadence/ASSURA
 1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
 1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
 1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
-1772750683 simv.daidir
+1772757416 simv.daidir
 -1 partitionlib
