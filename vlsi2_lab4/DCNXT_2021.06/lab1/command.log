@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version W-2024.09-SP5-5 for linux64 -- Oct 23, 2025
-#@ # Date:   Thu Apr  2 11:41:29 2026
+#@ # Date:   Thu Apr  2 13:27:33 2026
 #@ # Run by: lx2349@ecs04.poly.edu
 #@ 
 
@@ -15112,8 +15112,8 @@ source setup.tcl
 #@ source rm_setup/dc_setup.tcl
 #@ # -- Starting source rm_setup/dc_setup.tcl
 
-#@ source rm_setup/common_setup_lvt.tcl
-#@ # -- Starting source rm_setup/common_setup_lvt.tcl
+#@ source rm_setup/common_setup_hvt.tcl
+#@ # -- Starting source rm_setup/common_setup_hvt.tcl
 
 #@ ##########################################################################################
 #@ # User-defined variables for logical library setup in dc_setup.tcl
@@ -15125,15 +15125,15 @@ source setup.tcl
 #@ #  logic design and script files.
 #@ #set ADDITIONAL_SEARCH_PATH   "$PDK_DIR/lib/stdcell_lvt/db_nldm $PDK_DIR/tech/tf $PDK_DIR/tech/starrc/max $PDK_DIR/tech/starrc $PDK_DIR/temporary_ndm ./rtl ./scripts" ;
 #@ 
-#@ set TARGET_LIBRARY_FILES     "saed32lvt_ss0p75v125c.db"                              ;#  Logic cell library files
+#@ set TARGET_LIBRARY_FILES     "saed32hvt_ss0p75v125c.db"                              ;#  Logic cell library files
 #@ 
 #@ ##########################################################################################
 #@ # User-defined variables for physical library setup in dc_setup.tcl
 #@ ##########################################################################################
 #@ 
-#@ set NDM_DESIGN_LIB           "TOP_lvt.dlib"                 ;#  User-defined NDM design library name
+#@ set NDM_DESIGN_LIB           "TOP_hvt.dlib"                 ;#  User-defined NDM design library name
 #@ 
-#@ set NDM_REFERENCE_LIBS       "saed32_lvt.ndm"                 ;#  NDM physical cell libraries
+#@ set NDM_REFERENCE_LIBS       "saed32_hvt.ndm"                 ;#  NDM physical cell libraries
 #@ 
 #@ set TECH_FILE                "saed32nm_1p9m.tf"              ;#  Technology file
 #@ 
@@ -15142,7 +15142,7 @@ source setup.tcl
 #@ set MAP_FILE                 "saed32nm_tf_itf_tluplus.map"   ;#  Mapping file for TLUplus
 #@ 
 #@ return
-#@ # -- End source rm_setup/common_setup_lvt.tcl
+#@ # -- End source rm_setup/common_setup_hvt.tcl
 
 #@ 
 #@ ######################################################################
@@ -15190,17 +15190,14 @@ source setup.tcl
 #@ # -- End source setup.tcl
 
 read_verilog ./rtl/TOP.v
-elaborate TOP
 list_libs
 list_designs
 write_file -hier -f ddc -output ./unmapped/TOP.ddc
-gui_set_setting -window [gui_get_current_window -types Schematic -mru] -setting schematic:background_color -value black
-gui_set_setting -window [gui_get_current_window -types Schematic -mru] -setting zoomFitFactor -value 0.0
 set_preferred_routing_direction -layers {M1 M3 M5 M7 M9} -direction horizontal
 set_preferred_routing_direction -layers {M2 M4 M6 M8 MRDL} -direction vertical
 current_design
-source TOP_lvt.con
-#@ # -- Starting source TOP_lvt.con
+source TOP.con
+#@ # -- Starting source TOP.con
 
 #@ set lib_name saed32lvt_ss0p75v125c
 #@ current_design TOP
@@ -15209,7 +15206,7 @@ source TOP_lvt.con
 #@ reset_design
 #@ 
 #@ # Create clock object and set uncertainty
-#@ create_clock -period 2.15 [get_ports Clk]
+#@ create_clock -period 2.12 [get_ports Clk]
 #@ set_clock_uncertainty -setup 0.2 [get_clocks Clk]
 #@ 
 #@ # Set constraints on input ports
@@ -15222,12 +15219,38 @@ source TOP_lvt.con
 #@ # Set constraints on output ports
 #@ set_output_delay 1 -max -clock Clk [all_outputs]
 #@ set_load -max [expr [load_of $lib_name/AND2X1_LVT/A1] * 15] [all_outputs]
-#@ # -- End source TOP_lvt.con
+#@ # -- End source TOP.con
+
+source TOP_hvt.con
+#@ # -- Starting source TOP_hvt.con
+
+#@ set lib_name saed32hvt_ss0p75v125c
+#@ current_design TOP
+#@ 
+#@ # Reset all constraints 
+#@ reset_design
+#@ 
+#@ # Create clock object and set uncertainty
+#@ create_clock -period 8.65 [get_ports Clk]
+#@ set_clock_uncertainty -setup 0.2 [get_clocks Clk]
+#@ 
+#@ # Set constraints on input ports
+#@ suppress_message UID-401
+#@ suppress_message DCT-306
+#@ set_driving_cell -max -library $lib_name -lib_cell SDFFARX2_HVT [remove_from_collection [all_inputs] [get_ports Clk]]
+#@ set_input_delay 0.1 -max -clock Clk [remove_from_collection [all_inputs] [get_ports Clk]]
+#@ set_input_delay 1.35 -max -clock Clk [get_ports Neg_Flag]
+#@ 
+#@ # Set constraints on output ports
+#@ set_output_delay 1 -max -clock Clk [all_outputs]
+#@ set_load -max [expr [load_of $lib_name/AND2X1_HVT/A1] * 15] [all_outputs]
+#@ # -- End source TOP_hvt.con
 
 compile_ultra
 report_constraints -all_violators
 report_timing
 report_area
 report_power
-write -hierarchy -format ddc -output /home/lx2349/vlsi2/vlsi2_lab4/DCNXT_2021.06/lab1/mapped/TOP.ddc
 report_power > power_lvt_raw.txt
+report_power > power_hvt_raw.txt
+write -hierarchy -format ddc -output /home/lx2349/vlsi2/vlsi2_lab4/DCNXT_2021.06/lab1/mapped/TOP_hvt.ddc

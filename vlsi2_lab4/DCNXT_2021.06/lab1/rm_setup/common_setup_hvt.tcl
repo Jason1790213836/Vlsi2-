@@ -8,15 +8,15 @@ set ADDITIONAL_SEARCH_PATH   "../ref/DBs ../ref/CLIBs ../ref/tech  ./rtl ./scrip
                                                                                        #  logic design and script files.
 #set ADDITIONAL_SEARCH_PATH   "$PDK_DIR/lib/stdcell_lvt/db_nldm $PDK_DIR/tech/tf $PDK_DIR/tech/starrc/max $PDK_DIR/tech/starrc $PDK_DIR/temporary_ndm ./rtl ./scripts" ;
 
-set TARGET_LIBRARY_FILES     "saed32lvt_ss0p75v125c.db"                              ;#  Logic cell library files
+set TARGET_LIBRARY_FILES     "saed32hvt_ss0p75v125c.db"                              ;#  Logic cell library files
 
 ##########################################################################################
 # User-defined variables for physical library setup in dc_setup.tcl
 ##########################################################################################
 
-set NDM_DESIGN_LIB           "TOP.dlib"                 ;#  User-defined NDM design library name
+set NDM_DESIGN_LIB           "TOP_hvt.dlib"                 ;#  User-defined NDM design library name
 
-set NDM_REFERENCE_LIBS       "saed32_lvt.ndm"                 ;#  NDM physical cell libraries
+set NDM_REFERENCE_LIBS       "saed32_hvt.ndm"                 ;#  NDM physical cell libraries
 
 set TECH_FILE                "saed32nm_1p9m.tf"              ;#  Technology file
 
