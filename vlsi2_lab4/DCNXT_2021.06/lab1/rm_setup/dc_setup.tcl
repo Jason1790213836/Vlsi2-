@@ -1,4 +1,4 @@
-source rm_setup/common_setup_hvt.tcl
+source rm_setup/common_setup_lvt.tcl
 
 ######################################################################
 # Logical Library Settings

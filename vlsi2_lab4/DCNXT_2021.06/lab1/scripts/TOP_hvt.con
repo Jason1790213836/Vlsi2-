@@ -5,7 +5,7 @@ current_design TOP
 reset_design
 
 # Create clock object and set uncertainty
-create_clock -period 8.65 [get_ports Clk]
+create_clock -period 9.5 [get_ports Clk]
 set_clock_uncertainty -setup 0.2 [get_clocks Clk]
 
 # Set constraints on input ports
