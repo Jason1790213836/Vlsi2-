@@ -1,0 +1,57 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : TOP
+Version: W-2024.09-SP5-5
+Date   : Thu Apr  2 12:06:06 2026
+****************************************
+
+
+Library(s) Used:
+
+    saed32lvt_ss0p75v125c (File: /home/lx2349/vlsi2/vlsi2_lab4/DCNXT_2021.06/ref/DBs/saed32lvt_ss0p75v125c.db)
+
+
+Operating Conditions: ss0p75v125c   Library: saed32lvt_ss0p75v125c
+Wire Load Model Mode: Inactive.
+
+
+Global Operating Voltage = 0.75 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+Warning: Cannot report correlated power unless power prediction mode is set. (PWR-727)
+Power Breakdown
+---------------
+
+                             Cell        Driven Net  Tot Dynamic      Cell
+                             Internal    Switching   Power (uW)       Leakage
+Cell                         Power (uW)  Power (uW)  (% Cell/Tot)     Power (pW)
+--------------------------------------------------------------------------------
+Netlist Power                  34.0607      4.9538   3.901e+01 (87%)  4.809e+07
+Estimated Clock Tree Power   N/A         N/A         N/A (N/A)        N/A
+--------------------------------------------------------------------------------
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network     17.1480            0.0000            0.0000           17.1480  (  19.69%)  i
+register          12.3607            2.1937        1.7501e+07           32.0553  (  36.80%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      4.5520            2.7600        3.0589e+07           37.9005  (  43.51%)
+--------------------------------------------------------------------------------------------------
+Total             34.0607 uW         4.9538 uW     4.8089e+07 pW        87.1038 uW
+1
