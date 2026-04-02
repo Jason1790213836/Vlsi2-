@@ -25,3 +25,8 @@ The synthesis flow includes the following steps:
 ```tcl
 analyze -f verilog TOP.v
 elaborate TOP
+
+### 3. Apply Constraints
+Define clock period
+Set input/output delay
+Set driving cell and load
