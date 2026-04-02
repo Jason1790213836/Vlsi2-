@@ -19,3 +19,9 @@ The synthesis flow includes the following steps:
 ### 1. Setup Environment
 - Load library files (`.db`, `.ndm`)
 - Define target library (LVT / HVT)
+
+### 2. Read and Elaborate Design
+
+```tcl
+analyze -f verilog TOP.v
+elaborate TOP
