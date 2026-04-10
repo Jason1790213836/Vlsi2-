@@ -1,0 +1,24 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.8 - CAT37 01/17/2024 18:09 (csvcm36c-7) $
+\o Sub version:		sub-version  s353 
+\o Arguments:		-cdslib /home/lx2349/vlsi2/cds.lib -mpssession virtuoso696545 -mpshost ecs04.poly.edu -mpsversion 6.18 
+\o Working Directory:	ecs04.poly.edu:/home/lx2349/vlsi2
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		5.9.1
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "analogLib"
+\a nrResizeWindow(cdsLibEditor list(259 671 500 400))
+\a nrListItemAction(cdsLibEditor->mainTable 4 0)
+\o Active cell: 4 0 ""
+\a nrListItemRename(cdsLibEditor->mainTable, 4 0 "gpdk045")
+\a nrListItemAction(cdsLibEditor->mainTable 4 1)
+\o Active cell: 4 1 ""
+\a cdsLibEditor->fileSaveButton->value = t
+\a nrListItemRename(cdsLibEditor->mainTable, 4 1 "/ALL_PDK/gpdk045_v_6_0/gpdk045")
+\a nrResizeWindow(cdsLibEditor list(237 671 500 400))
+\a nrResizeWindow(cdsLibEditor list(223 671 500 400))
+\a nrResizeWindow(cdsLibEditor list(261 671 500 400))
+\a nrResizeWindow(cdsLibEditor list(251 671 500 400))
+\a nrResizeWindow(cdsLibEditor list(259 671 500 400))
+\a exit(0)

@@ -1,0 +1,6 @@
+# File Created by lx2349 at Thu Apr  9 17:03:17 2026
+# assisted by CdsLibEditor
+SOFTINCLUDE /eda/cadence/local/cdssetup/cds.lib
+#Removed by ddDeleteObj: DEFINE ece6443lib /home/lx2349/vlsi2/vlsi2_lab5/ece6443lib
+DEFINE gpdk045 /ALL_PDK/gpdk045_v_6_0/gpdk045
+DEFINE ece6443lib /home/lx2349/vlsi2/ece6443lib

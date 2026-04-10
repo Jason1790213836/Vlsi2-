@@ -1,0 +1,18 @@
+\o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 01/17/2024 18:07 (csvcm36c-7) $
+\o Sub version:		sub-version  s353 
+\o Arguments:		-unmapped -mpssession virtuoso696545 -mpshost ecs04.poly.edu 
+\o Working Directory:	ecs04.poly.edu:/home/lx2349/vlsi2
+\o 64-bit offsets
+\o Qt version: 		5.9.1
+\o MPS virtuoso types registered: 65
+\o changeWorkingDir("/home/lx2349/vlsi2") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o MPS request: update library list
+\o DB was auto refreshed.
+\o DB was auto refreshed.
+\o Closing unmapped application from lack of activity.
+\o Log file is "/home/lx2349/vlsi2/libManager.log".
+\o Opening libManager window.
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrResizeWindow(cdsLibManager list(576 218 768 518))

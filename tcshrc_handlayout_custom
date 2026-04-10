@@ -1,0 +1,35 @@
+#this file is to setup cadence software
+setenv CDS_LIC_FILE 5281@pyke.poly.edu:/opt/cadence/License/cadence_2022_july.lic
+setenv base_dir /eda/cadence/
+setenv CDS $base_dir
+setenv CDS_HOME /eda/cadence/IC618
+setenv MMSIM_HOME /eda/cadence/SPECTRE231/tools.lnx86
+setenv CDS_DIR $CDS_HOME/tools
+setenv CDS_SITE /eda/cadence/local
+setenv CDS_Netlisting_Mode Analog
+setenv CDK_DIR /eda/cadence/local/ncsu-cdk-1.6.0.beta
+setenv PDK_DIR /ALL_PDK/gpdk045_v_6_0
+setenv JASPER_HOME /eda/cadence/jasper
+setenv QRC_HOME /eda/cadence/QUANTUS251
+setenv CLS_CDSD_COMPATIBILITY_LOCKING NO
+setenv CDS_AUTO_64BIT ALL
+setenv CDSHOME /eda/cadence/IC618
+setenv PVS_HOME /eda/cadence/PVS231
+setenv PVS_COLOR_DIR $PVS_HOME/tools.lnx86/pvs/samples/color_setup
+unsetenv OA_HOME
+unsetenv ASSURAHOME
+
+set path=( /usr/lib64 $QRC_HOME/bin $CDSHOME/tools/dfII/bin $MMSIM_HOME/bin $MMSIM_HOME/dfII/bin $CDS_DIR/bin $CDS_DIR/dfII/bin $CDS_DIR/SKILL37.00 $CDS_DIR/dracula/bin $PVS_HOME/bin $PVS_HOME/tools/bin $PVS_HOME/tools/dfII/bin $PVS_HOME/tools/pvs/bin $path )
+
+set present = `printenv PYTHONPATH`
+if ($present == "") then
+  setenv PYTHONPATH $PDK_DIR'/ncsu_basekit/techfile/cni'
+else
+  setenv PYTHONPATH $PYTHONPATH':'$PDK_DIR'/ncsu_basekit/techfile/cni'
+endif
+
+setenv MGC_CALIBRE_DRC_RUNSET_FILE ./.runset.calibre.drc
+setenv MGC_CALIBRE_LVS_RUNSET_FILE ./.runset.calibre.lvs
+setenv MGC_CALIBRE_PEX_RUNSET_FILE ./.runset.calibre.pex
+
+setenv LD_PRELOAD /usr/lib64/libssl.so.1.1.1k:/usr/lib64/libcrypto.so.1.1.1k
