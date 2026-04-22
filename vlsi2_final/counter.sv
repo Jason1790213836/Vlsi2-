@@ -1,5 +1,5 @@
 
-module counter (#parameter length=10)
+module counter #(parameter length=10)
 	(	
 		input logic[length-1:0]d_in,
 		input logic clk,

@@ -12,9 +12,9 @@ module comparator(input logic [7:0]data_t,
 
 		  if(data_t>ramout)begin
 			  gt=1'b1;
-		  end else if(data==ranout)begin
+		  end else if(data_t==ramout)begin
 			  eq=1'b1;
-		  end else if(data<ranout)begin
+		  end else if(data_t<ramout)begin
 			  lt=1'b1;
 		  end
 	  end

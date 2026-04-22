@@ -1,6 +1,6 @@
 module controller(
 		input logic start,
-		input logic rsr,
+		input logic rst,
 		input logic clk,
 		input logic cout,
 		output logic NbarT,
