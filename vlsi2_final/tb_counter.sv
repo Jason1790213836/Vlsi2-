@@ -17,83 +17,83 @@ module tb_counter;
 
     always #5 clk = ~clk;
 
-    initial begin
-        clk = 0;
-        d_in = 10'd0;
-        ld   = 1'b0;
-        u_d  = 1'b1;
-        cen  = 1'b0;
+    task fail_now;
+    begin
+        $display("@@@FAIL");
+        $finish();
+    end
+    endtask
 
-        // load test
+    initial begin
+        clk = 1'b0;
+        d_in = 10'd0;
+        ld = 1'b0;
+        u_d = 1'b1;
+        cen = 1'b0;
+
+        // 1. load
+        cen = 1'b1;
+        ld  = 1'b1;
         d_in = 10'd5;
-        cen  = 1'b1;
-        ld   = 1'b1;
         @(posedge clk);
         #1;
-        if (q !== 10'd5 || cout !== 1'b0) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'd5 || cout !== 1'b0) fail_now();
 
-        // up count
+        // 2. count up
         ld  = 1'b0;
         u_d = 1'b1;
         @(posedge clk);
         #1;
-        if (q !== 10'd6 || cout !== 1'b0) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'd6 || cout !== 1'b0) fail_now();
 
-        // hold when cen = 0
+        // 3. hold when cen = 0
         cen = 1'b0;
         @(posedge clk);
         #1;
-        if (q !== 10'd6) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'd6 || cout !== 1'b0) fail_now();
 
-        // overflow boundary check
-        cen  = 1'b1;
+        // 4. count down
+        cen = 1'b1;
+        u_d = 1'b0;
+        @(posedge clk);
+        #1;
+        if (q !== 10'd5 || cout !== 1'b0) fail_now();
+
+        // 5. overflow test
         ld   = 1'b1;
         d_in = 10'b1111111111;
         @(posedge clk);
         #1;
-        ld = 1'b0;
-        u_d = 1'b1;
-        #1;
-        if (cout !== 1'b1) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'b1111111111 || cout !== 1'b0) fail_now();
 
+        ld  = 1'b0;
+        u_d = 1'b1;
         @(posedge clk);
         #1;
-        if (q !== 10'b0000000000) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'b0000000000 || cout !== 1'b1) fail_now();
 
-        // underflow boundary check
+        // next cycle should continue normally
+        @(posedge clk);
+        #1;
+        if (q !== 10'b0000000001 || cout !== 1'b0) fail_now();
+
+        // 6. underflow test
         ld   = 1'b1;
         d_in = 10'b0000000000;
         @(posedge clk);
         #1;
+        if (q !== 10'b0000000000 || cout !== 1'b0) fail_now();
+
         ld  = 1'b0;
         u_d = 1'b0;
-        #1;
-        if (cout !== 1'b1) begin
-            $display("@@@FAIL");
-            $finish();
-        end
-
         @(posedge clk);
         #1;
-        if (q !== 10'b1111111111) begin
-            $display("@@@FAIL");
-            $finish();
-        end
+        if (q !== 10'b1111111111 || cout !== 1'b1) fail_now();
+
+        // next cycle should continue normally
+        @(posedge clk);
+        #1;
+        if (q !== 10'b1111111110 || cout !== 1'b0) fail_now();
 
         $display("@@@PASS");
         $finish();
