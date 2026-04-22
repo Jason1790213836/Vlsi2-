@@ -4,7 +4,7 @@ module comparator(input logic [7:0]data_t,
 		  output logic gt,
 		  output logic eq,
 		  output logic lt
-	  )
+	  );
 	  always_comb begin
 		  gt=1'b0;
 		  eq=1'b0;
