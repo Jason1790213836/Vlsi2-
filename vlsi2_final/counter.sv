@@ -22,14 +22,15 @@ module counter #(parameter length=10)
 		end
 	end
 	always_comb begin
-		cout=1'b0;
-                
-		if(cen&&!ld)begin
-			if(u_d&&(q=={length{1'b1}}))begin
-				cout=1'b1;
-			end else if((!u_d)&&(q=={length{1'b0}}))begin
-				cout=1'b1;
-			end
-		end
+	if (!cen)
+            cout = 1'b0;
+        else if (ld)
+            cout = 1'b0;
+        else if (u_d && (q == {length{1'b1}}))
+            cout = 1'b1;   // up count overflow
+        else if (!u_d && (q == {length{1'b0}}))
+            cout = 1'b1;   // down count underflow
+        else
+            cout = 1'b0;
 	end
 endmodule
