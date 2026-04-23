@@ -5,11 +5,11 @@
         "module",
         1
     ],
-    "tb_counter": [
-        "tb_counter",
-        "NtmA7",
+    "tb_controller": [
+        "tb_controller",
+        "IAKFK",
         "module",
-        4
+        2
     ],
     "...MASTER...": [
         "SIM",

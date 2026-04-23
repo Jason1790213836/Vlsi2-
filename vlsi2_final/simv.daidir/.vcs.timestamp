@@ -32,8 +32,8 @@
 -sverilog
 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/vcs1
 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
-counter.sv
-tb_counter.sv
+controller.sv
+tb_controller.sv
 95
 base_dir=/eda/cadence/
 XMODIFIERS=@im=ibus
@@ -133,8 +133,8 @@ ASSURAHOME=/eda/cadence/ASSURA
 0
 0
 4
-1776822156 tb_counter.sv
-1776822135 counter.sv
+1776974959 tb_controller.sv
+1776822125 controller.sv
 1713174949 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
 1713323180 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
 4
@@ -142,5 +142,5 @@ ASSURAHOME=/eda/cadence/ASSURA
 1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
 1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
 1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
-1776822165 simv.daidir
+1776974981 simv.daidir
 -1 partitionlib

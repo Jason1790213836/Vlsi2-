@@ -1,2 +1,2 @@
-counter.sv
-tb_counter.sv
+controller.sv
+tb_controller.sv
