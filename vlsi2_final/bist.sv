@@ -37,16 +37,15 @@ module bist #(
         .ld    (ld)
     );
 
-    counter #(.length(10)) u_counter (
-        .d_in (10'b0),
-        .clk  (clk),
-        .ld   (ld),
-        .u_d  (1'b1),
-        .cen  (NbarT),
-        .q    (q),
-        .cout (cout)
-    );
-
+counter #(.length(10)) u_counter (
+    .d_in (10'b0),
+    .clk  (clk),
+    .ld   (ld),
+    .u_d  (1'b1),
+    .cen  (1'b1),
+    .q    (q),
+    .cout (cout)
+);
     decoder u_decoder (
         .q      (q[9:7]),
         .data_t (data_t)
@@ -87,12 +86,12 @@ module bist #(
     );
 
     assign dataout = ramout;
-
-	always_ff @(posedge clk) begin
+always_ff @(posedge clk) begin
     if (rst)
         fail <= 1'b0;
     else if (NbarT && opr && rwbar_sel && ~eq)
         fail <= 1'b1;
+    else
+        fail <= 1'b0;
 end
-    
     endmodule

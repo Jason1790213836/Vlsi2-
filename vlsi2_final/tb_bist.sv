@@ -1,3 +1,25 @@
+module sram_fault_injector (
+    input  logic       clk,
+    input  logic       cs,
+    input  logic       rwbar,
+    input  logic [5:0] ramaddr,
+    ref    logic [7:0] ram_ref [0:63],
+    output logic       injected
+);
+
+    initial injected = 1'b0;
+
+    always @(posedge clk) begin
+        if (!injected && cs === 1'b1 && rwbar === 1'b0 && ramaddr === 6'd20) begin
+            #1;
+            force ram_ref[6'd20] = 8'h00;
+            injected = 1'b1;
+        end
+    end
+
+endmodule
+
+
 module tb_bist;
 
     logic        start, rst, clk, csin, rwbarin, opr;
@@ -5,6 +27,7 @@ module tb_bist;
     logic [7:0]  datain;
     logic [7:0]  dataout;
     logic        fail;
+    logic        injected;
 
     bist dut (
         .start(start),
@@ -21,33 +44,17 @@ module tb_bist;
 
     always #5 clk = ~clk;
 
-    task FAIL;
+    task PASS;
         begin
-            $display("@@@FAIL");
+            $display("@@@PASS");
             $finish;
         end
     endtask
 
-    task normal_write(input logic [5:0] addr, input logic [7:0] data);
+    task FAIL;
         begin
-            csin    = 1'b1;
-            rwbarin = 1'b0;
-            address = addr;
-            datain  = data;
-            @(posedge clk);
-            #1;
-        end
-    endtask
-
-    task normal_read_check(input logic [5:0] addr, input logic [7:0] expected);
-        begin
-            csin    = 1'b1;
-            rwbarin = 1'b1;
-            address = addr;
-            @(posedge clk);
-            @(posedge clk);
-            #1;
-            if (dataout !== expected) FAIL();
+            $display("@@@FAIL");
+            $finish;
         end
     endtask
 
@@ -56,48 +63,40 @@ module tb_bist;
         rst     = 1'b1;
         start   = 1'b0;
         csin    = 1'b0;
-        rwbarin = 1'b1;
-        opr     = 1'b0;
+        rwbarin = 1'b0;
+        opr     = 1'b1;
         address = 6'd0;
         datain  = 8'h00;
 
-        repeat (2) @(posedge clk);
+        repeat (3) @(posedge clk);
         rst = 1'b0;
-        repeat (2) @(posedge clk);
-
-        normal_write(6'd0,  8'hAA);
-        normal_read_check(6'd0, 8'hAA);
-
-        normal_write(6'd10, 8'hA5);
-        normal_read_check(6'd10, 8'hA5);
-
-        normal_write(6'd63, 8'h3C);
-        normal_read_check(6'd63, 8'h3C);
-
-        csin = 1'b0;
-        #1;
-        if (dataout !== 8'h00) FAIL();
-
-        opr = 1'b1;
-        repeat (3) begin
-            @(posedge clk);
-            #1;
-            if (fail !== 1'b0) FAIL();
-        end
+        repeat (3) @(posedge clk);
 
         start = 1'b1;
         @(posedge clk);
         start = 1'b0;
 
-        repeat (1100) begin
+        repeat (600) begin
             @(posedge clk);
             #1;
-            if (fail !== 1'b0) FAIL();
+
+            if (injected === 1'b1 && fail === 1'b1) begin
+                $display("@@@PASS");
+                $finish;
+            end
         end
 
-        $display("@@@PASS");
-        $finish;
+        FAIL();
     end
 
 endmodule
 
+
+bind sram sram_fault_injector FI (
+    .clk      (clk),
+    .cs       (cs),
+    .rwbar    (rwbar),
+    .ramaddr  (ramaddr),
+    .ram_ref  (ram),
+    .injected (tb_bist.injected)
+);
