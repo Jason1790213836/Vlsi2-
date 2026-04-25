@@ -1,3 +1,3 @@
 Command Line: /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/elabcom -logdir simv.daidir/elabcomLog -simvdaidir simv.daidir -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -topfile simv.daidir/.elabcomTopFile -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
 uname(Linux ecs04.poly.edu 4.18.0-553.89.1.el8_10.x86_64 #1 SMP Sat Nov 29 00:49:18 EST 2025 x86_64)
-au time 0.137553 0.016701 0.021243 delta 89808896 89808896 total 300929024 300929024
+au time 0.118781 0.014177 0.019802 delta 89866240 89866240 total 300986368 300986368

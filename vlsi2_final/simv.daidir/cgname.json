@@ -5,6 +5,12 @@
         "module",
         1
     ],
+    "sram_bist_checker": [
+        "sram_bist_checker",
+        "MSSbn",
+        "module",
+        5
+    ],
     "tb_bist": [
         "tb_bist",
         "fNhkc",

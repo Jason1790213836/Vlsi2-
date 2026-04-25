@@ -140,7 +140,7 @@ ASSURAHOME=/eda/cadence/ASSURA
 0
 0
 10
-1777140227 tb_bist.sv
+1777141636 tb_bist.sv
 1777086499 bist.sv
 1777088641 sram.sv
 1777086812 multiplexer.sv
@@ -155,5 +155,5 @@ ASSURAHOME=/eda/cadence/ASSURA
 1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
 1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
 1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
-1777140236 simv.daidir
+1777141642 simv.daidir
 -1 partitionlib

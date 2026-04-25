@@ -1,102 +1,65 @@
 module tb_bist;
 
-    logic        start, rst, clk, csin, rwbarin, opr;
-    logic [5:0]  address;
-    logic [7:0]  datain;
-    logic [7:0]  dataout;
-    logic        fail;
+    logic start, rst, clk, csin, rwbarin, opr;
+    logic [5:0] address;
+    logic [7:0] datain, dataout;
+    logic fail;
 
     bist dut (
-        .start(start),
-        .rst(rst),
-        .clk(clk),
-        .csin(csin),
-        .rwbarin(rwbarin),
-        .opr(opr),
-        .address(address),
-        .datain(datain),
-        .dataout(dataout),
-        .fail(fail)
+        .start(start), .rst(rst), .clk(clk),
+        .csin(csin), .rwbarin(rwbarin), .opr(opr),
+        .address(address), .datain(datain),
+        .dataout(dataout), .fail(fail)
     );
 
     always #5 clk = ~clk;
 
-    task FAIL;
+    task TB_FAIL;
         begin
             $display("@@@FAIL");
             $finish;
         end
     endtask
 
-    task normal_write(input logic [5:0] addr, input logic [7:0] data);
-        begin
-            csin    = 1'b1;
-            rwbarin = 1'b0;
-            address = addr;
-            datain  = data;
-            @(posedge clk);
-            #1;
-        end
-    endtask
-
-    task normal_read_check(input logic [5:0] addr, input logic [7:0] expected);
-        begin
-            csin    = 1'b1;
-            rwbarin = 1'b1;
-            address = addr;
-            @(posedge clk);
-            @(posedge clk);
-            #1;
-            if (dataout !== expected) FAIL();
-        end
-    endtask
-
     initial begin
-        clk     = 1'b0;
-        rst     = 1'b1;
-        start   = 1'b0;
-        csin    = 1'b0;
-        rwbarin = 1'b1;
-        opr     = 1'b0;
-        address = 6'd0;
-        datain  = 8'h00;
+        clk = 0;
+        rst = 1;
+        start = 0;
+        csin = 0;
+        rwbarin = 1;
+        opr = 1;
+        address = 0;
+        datain = 0;
 
-        repeat (2) @(posedge clk);
-        rst = 1'b0;
-        repeat (2) @(posedge clk);
+        repeat (3) @(posedge clk);
+        rst = 0;
+        repeat (3) @(posedge clk);
 
-        normal_write(6'd0,  8'hAA);
-        normal_read_check(6'd0, 8'hAA);
-
-        normal_write(6'd10, 8'hA5);
-        normal_read_check(6'd10, 8'hA5);
-
-        normal_write(6'd63, 8'h3C);
-        normal_read_check(6'd63, 8'h3C);
-
-        csin = 1'b0;
-        #1;
-        if (dataout !== 8'h00) FAIL();
-
-        opr = 1'b1;
-        repeat (3) begin
-            @(posedge clk);
-            #1;
-            if (fail !== 1'b0) FAIL();
-        end
-
-        start = 1'b1;
+        // Start BIST
+        start = 1;
         @(posedge clk);
-        start = 1'b0;
+        start = 0;
 
-        repeat (1100) begin
+        // Wait until BIST begins reading pattern 0:
+        // q[6] == 1 means read phase, q[5:0] is address.
+        wait (dut.NbarT === 1'b1 && dut.q[6] === 1'b1);
+
+        // Corrupt an SRAM location that BIST is about to read.
+        // Correct BIST should detect this and assert fail.
+        dut.u_sram.ram[6'd10] = 8'h00;
+
+        // Wait until BIST reads address 10 or shortly after
+        repeat (80) begin
             @(posedge clk);
             #1;
-            if (fail !== 1'b0) FAIL();
+            if (fail === 1'b1) begin
+                $display("@@@PASS");
+                $finish;
+            end
         end
 
-        $display("@@@PASS");
-        $finish;
+        // If fail never asserted, buggy BIST was not detected
+        TB_FAIL();
     end
 
 endmodule
