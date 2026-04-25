@@ -28,11 +28,6 @@ module bist #(
     logic [length-1:0] ramout;
     logic gt, eq, lt;
 
-    logic [length-1:0] data_t_d;
-    logic              rwbar_d;
-    logic              NbarT_d;
-    logic              opr_d;
-
     controller u_controller (
         .start (start),
         .rst   (rst),
@@ -47,7 +42,7 @@ module bist #(
         .clk  (clk),
         .ld   (ld),
         .u_d  (1'b1),
-        .cen  (1'b1),
+        .cen  (NbarT),
         .q    (q),
         .cout (cout)
     );
@@ -93,6 +88,7 @@ module bist #(
 
     assign dataout = ramout;
 
+// 修改后的 fail 逻辑
     always_ff @(posedge clk) begin
         if (rst) begin
             data_t_d <= '0;
@@ -101,16 +97,21 @@ module bist #(
             opr_d    <= 1'b0;
             fail     <= 1'b0;
         end else begin
+            // 打拍对齐时序
             data_t_d <= data_t;
             rwbar_d  <= rwbar_sel;
             NbarT_d  <= NbarT;
             opr_d    <= opr;
 
-            if (NbarT_d && opr_d && rwbar_d && (ramout !== data_t_d))
-                fail <= 1'b1;
-            else
-                fail <= 1'b0;
+            // 只有当 BIST 运行且处于读周期(rwbar_d=1)时才比较
+            // 注意：取消 else fail <= 0，让 fail 一旦变 1 就保持住
+            if (NbarT_d && rwbar_d) begin
+                if (ramout !== data_t_d) begin
+                    fail <= 1'b1; 
+                end
+            end
         end
     end
 
 endmodule
+

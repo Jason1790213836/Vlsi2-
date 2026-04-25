@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1777146925.981901714, "rt":0.55, "ut":0.18, "st":0.16}}
+{"vcselab":{"timestamp_begin":1777146926.764807529, "rt":0.31, "ut":0.14, "st":0.05}}
+{"link":{"timestamp_begin":1777146927.259196265, "rt":0.63, "ut":0.22, "st":0.26}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1777146924.891224433}
+{"VCS_COMP_START_TIME": 1777146924.891224433}
+{"VCS_COMP_END_TIME": 1777146929.063615613}
+{"VCS_USER_OPTIONS": "-sverilog comparator.sv counter.sv decoder.sv controller.sv multiplexer.sv sram.sv bist.sv tb_bist.sv -full64 -R"}
+{"vcs1": {"peak_mem": 391740}}
+{"vcselab": {"peak_mem": 254904}}
