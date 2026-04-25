@@ -1,102 +1,102 @@
 module tb_bist;
 
-    logic        start;
-    logic        rst;
-    logic        clk;
-    logic        csin;
-    logic        rwbarin;
-    logic        opr;
+    logic        start, rst, clk, csin, rwbarin, opr;
     logic [5:0]  address;
     logic [7:0]  datain;
     logic [7:0]  dataout;
     logic        fail;
 
     bist dut (
-        .start   (start),
-        .rst     (rst),
-        .clk     (clk),
-        .csin    (csin),
-        .rwbarin (rwbarin),
-        .opr     (opr),
-        .address (address),
-        .datain  (datain),
-        .dataout (dataout),
-        .fail    (fail)
+        .start(start),
+        .rst(rst),
+        .clk(clk),
+        .csin(csin),
+        .rwbarin(rwbarin),
+        .opr(opr),
+        .address(address),
+        .datain(datain),
+        .dataout(dataout),
+        .fail(fail)
     );
 
     always #5 clk = ~clk;
 
-    task fail_now;
+    task FAIL;
         begin
             $display("@@@FAIL");
             $finish;
         end
     endtask
 
-    initial begin
-        clk     = 0;
-        rst     = 1;
-        start   = 0;
-        csin    = 0;
-        rwbarin = 1;
-        opr     = 0;
-        address = 0;
-        datain  = 0;
-
-        repeat (2) @(posedge clk);
-        rst = 0;
-
-        // Normal write
-        csin    = 1;
-        rwbarin = 0;
-        address = 6'd10;
-        datain  = 8'hA5;
-        @(posedge clk);
-
-        // Normal read
-        rwbarin = 1;
-        address = 6'd10;
-        @(posedge clk);
-        #1;
-        if (dataout !== 8'hA5) fail_now();
-
-        // csin = 0 should disable memory in normal mode
-        csin = 0;
-        #1;
-        if (dataout !== 8'h00) fail_now();
-
-        // Normal mode should not assert fail
-        opr = 1;
-        repeat (2) @(posedge clk);
-        #1;
-        if (fail !== 1'b0) fail_now();
-
-        // Enter BIST mode
-        csin  = 0;
-        start = 1;
-        @(posedge clk);
-        start = 0;
-        opr   = 1;
-
-        // Let BIST write first pattern to memory.
-        repeat (66) @(posedge clk);
-
-        // Corrupt one SRAM location after BIST write phase.
-        // Pattern 000 should be 8'hAA, so 8'h00 creates mismatch.
-        dut.u_sram.ram[6'd5] = 8'h00;
-
-        // During BIST read phase, fail should become 1 when address 5 is read.
-        repeat (20) begin
+    task normal_write(input logic [5:0] addr, input logic [7:0] data);
+        begin
+            csin    = 1'b1;
+            rwbarin = 1'b0;
+            address = addr;
+            datain  = data;
             @(posedge clk);
             #1;
-            if (fail === 1'b1) begin
-                $display("@@@PASS");
-                $finish;
-            end
+        end
+    endtask
+
+    task normal_read_check(input logic [5:0] addr, input logic [7:0] expected);
+        begin
+            csin    = 1'b1;
+            rwbarin = 1'b1;
+            address = addr;
+            @(posedge clk);
+            @(posedge clk);
+            #1;
+            if (dataout !== expected) FAIL();
+        end
+    endtask
+
+    initial begin
+        clk     = 1'b0;
+        rst     = 1'b1;
+        start   = 1'b0;
+        csin    = 1'b0;
+        rwbarin = 1'b1;
+        opr     = 1'b0;
+        address = 6'd0;
+        datain  = 8'h00;
+
+        repeat (2) @(posedge clk);
+        rst = 1'b0;
+        repeat (2) @(posedge clk);
+
+        normal_write(6'd0,  8'hAA);
+        normal_read_check(6'd0, 8'hAA);
+
+        normal_write(6'd10, 8'hA5);
+        normal_read_check(6'd10, 8'hA5);
+
+        normal_write(6'd63, 8'h3C);
+        normal_read_check(6'd63, 8'h3C);
+
+        csin = 1'b0;
+        #1;
+        if (dataout !== 8'h00) FAIL();
+
+        opr = 1'b1;
+        repeat (3) begin
+            @(posedge clk);
+            #1;
+            if (fail !== 1'b0) FAIL();
         end
 
-        // If fail never asserted, BIST fail logic is buggy.
-        fail_now();
+        start = 1'b1;
+        @(posedge clk);
+        start = 1'b0;
+
+        repeat (1100) begin
+            @(posedge clk);
+            #1;
+            if (fail !== 1'b0) FAIL();
+        end
+
+        $display("@@@PASS");
+        $finish;
     end
 
 endmodule

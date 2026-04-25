@@ -5,11 +5,11 @@
         "module",
         1
     ],
-    "tb_sram": [
-        "tb_sram",
-        "EdF8P",
+    "tb_bist": [
+        "tb_bist",
+        "fNhkc",
         "module",
-        4
+        2
     ],
     "...MASTER...": [
         "SIM",

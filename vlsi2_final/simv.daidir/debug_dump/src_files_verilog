@@ -1,2 +1,8 @@
+/home/lx2349/vlsi2/vlsi2_final/bist.sv
+/home/lx2349/vlsi2/vlsi2_final/comparator.sv
+/home/lx2349/vlsi2/vlsi2_final/controller.sv
+/home/lx2349/vlsi2/vlsi2_final/counter.sv
+/home/lx2349/vlsi2/vlsi2_final/decoder.sv
+/home/lx2349/vlsi2/vlsi2_final/multiplexer.sv
 /home/lx2349/vlsi2/vlsi2_final/sram.sv
-/home/lx2349/vlsi2/vlsi2_final/tb_sram.sv
+/home/lx2349/vlsi2/vlsi2_final/tb_bist.sv

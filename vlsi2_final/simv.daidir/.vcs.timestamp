@@ -1,5 +1,5 @@
 0
-34
+41
 +itf+/eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
 +vcsd1
 +vpi
@@ -22,6 +22,7 @@
 -Mxllcflags=
 -P
 -Xufe=2steps
+-Xvcs_run_simv=1
 -debug_access+all
 -fsdb
 -full64
@@ -32,8 +33,14 @@
 -sverilog
 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/bin/vcs1
 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
+comparator.sv
+counter.sv
+decoder.sv
+controller.sv
+multiplexer.sv
 sram.sv
-tb_sram.sv
+bist.sv
+tb_bist.sv
 95
 base_dir=/eda/cadence/
 XMODIFIERS=@im=ibus
@@ -132,9 +139,15 @@ CALIBRE_HOME=/eda/mentor/Calibre/aok_cal_2024.2_29.16
 ASSURAHOME=/eda/cadence/ASSURA
 0
 0
-4
-1777087101 tb_sram.sv
-1777086616 sram.sv
+10
+1777140227 tb_bist.sv
+1777086499 bist.sv
+1777088641 sram.sv
+1777086812 multiplexer.sv
+1776822125 controller.sv
+1776818867 decoder.sv
+1776974838 counter.sv
+1776818488 comparator.sv
 1713174949 /eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/verdi.tab
 1713323180 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/vcsdp_lite.tab
 4
@@ -142,5 +155,5 @@ ASSURAHOME=/eda/cadence/ASSURA
 1713323995 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/liberrorinf.so
 1713323940 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libsnpsmalloc.so
 1713323992 /eda/synopsys/vcs/U-2023.03-SP2-5/linux64/lib/libvfs.so
-1777087170 simv.daidir
+1777140236 simv.daidir
 -1 partitionlib
