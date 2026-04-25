@@ -1,4 +1,3 @@
-
 module tb_bist;
 
     logic        start;
@@ -27,12 +26,10 @@ module tb_bist;
 
     always #5 clk = ~clk;
 
-    task check(input logic cond);
+    task fail_now;
         begin
-            if (!cond) begin
-                $display("@@@FAIL");
-                $finish;
-            end
+            $display("@@@FAIL");
+            $finish;
         end
     endtask
 
@@ -43,54 +40,63 @@ module tb_bist;
         csin    = 0;
         rwbarin = 1;
         opr     = 0;
-        address = 6'd0;
-        datain  = 8'd0;
+        address = 0;
+        datain  = 0;
 
-        // reset
         repeat (2) @(posedge clk);
         rst = 0;
 
-        // -----------------------------
-        // Normal mode write
-        // -----------------------------
+        // Normal write
         csin    = 1;
-        rwbarin = 0;          // write
+        rwbarin = 0;
         address = 6'd10;
         datain  = 8'hA5;
         @(posedge clk);
 
-        // -----------------------------
-        // Normal mode read
-        // -----------------------------
-        rwbarin = 1;          // read
+        // Normal read
+        rwbarin = 1;
         address = 6'd10;
         @(posedge clk);
         #1;
-        check(dataout == 8'hA5);
+        if (dataout !== 8'hA5) fail_now();
 
-        // Normal mode should not trigger fail because NbarT = 0
-        opr = 1;
+        // csin = 0 should disable memory in normal mode
+        csin = 0;
         #1;
-        check(fail == 1'b0);
+        if (dataout !== 8'h00) fail_now();
 
-        // -----------------------------
+        // Normal mode should not assert fail
+        opr = 1;
+        repeat (2) @(posedge clk);
+        #1;
+        if (fail !== 1'b0) fail_now();
+
         // Enter BIST mode
-        // -----------------------------
+        csin  = 0;
         start = 1;
         @(posedge clk);
         start = 0;
+        opr   = 1;
 
-        // Let BIST run for some cycles
-        opr = 1;
+        // Let BIST write first pattern to memory.
+        repeat (66) @(posedge clk);
 
-        repeat (300) begin
+        // Corrupt one SRAM location after BIST write phase.
+        // Pattern 000 should be 8'hAA, so 8'h00 creates mismatch.
+        dut.u_sram.ram[6'd5] = 8'h00;
+
+        // During BIST read phase, fail should become 1 when address 5 is read.
+        repeat (20) begin
             @(posedge clk);
             #1;
-            check(fail == 1'b0);
+            if (fail === 1'b1) begin
+                $display("@@@PASS");
+                $finish;
+            end
         end
 
-        $display("@@@PASS");
-        $finish;
+        // If fail never asserted, BIST fail logic is buggy.
+        fail_now();
     end
 
 endmodule
