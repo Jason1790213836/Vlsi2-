@@ -28,6 +28,11 @@ module bist #(
     logic [length-1:0] ramout;
     logic gt, eq, lt;
 
+    logic [length-1:0] data_t_d;
+    logic              rwbar_d;
+    logic              NbarT_d;
+    logic              opr_d;
+
     controller u_controller (
         .start (start),
         .rst   (rst),
@@ -37,15 +42,16 @@ module bist #(
         .ld    (ld)
     );
 
-counter #(.length(10)) u_counter (
-    .d_in (10'b0),
-    .clk  (clk),
-    .ld   (ld),
-    .u_d  (1'b1),
-    .cen  (1'b1),
-    .q    (q),
-    .cout (cout)
-);
+    counter #(.length(10)) u_counter (
+        .d_in (10'b0),
+        .clk  (clk),
+        .ld   (ld),
+        .u_d  (1'b1),
+        .cen  (1'b1),
+        .q    (q),
+        .cout (cout)
+    );
+
     decoder u_decoder (
         .q      (q[9:7]),
         .data_t (data_t)
@@ -86,12 +92,25 @@ counter #(.length(10)) u_counter (
     );
 
     assign dataout = ramout;
-always_ff @(posedge clk) begin
-    if (rst)
-        fail <= 1'b0;
-    else if (NbarT && opr && rwbar_sel && ~eq)
-        fail <= 1'b1;
-    else
-        fail <= 1'b0;
-end
-    endmodule
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            data_t_d <= '0;
+            rwbar_d  <= 1'b0;
+            NbarT_d  <= 1'b0;
+            opr_d    <= 1'b0;
+            fail     <= 1'b0;
+        end else begin
+            data_t_d <= data_t;
+            rwbar_d  <= rwbar_sel;
+            NbarT_d  <= NbarT;
+            opr_d    <= opr;
+
+            if (NbarT_d && opr_d && rwbar_d && (ramout !== data_t_d))
+                fail <= 1'b1;
+            else
+                fail <= 1'b0;
+        end
+    end
+
+endmodule
