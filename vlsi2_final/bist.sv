@@ -88,11 +88,11 @@ module bist #(
 
     assign dataout = ramout;
 
-    always_ff @(posedge clk) begin
-        if (NbarT && opr && rwbar_sel && ~eq)
-            fail <= 1'b1;
-        else
-            fail <= 1'b0;
-    end
-
-endmodule
+	always_ff @(posedge clk) begin
+    if (rst)
+        fail <= 1'b0;
+    else if (NbarT && opr && rwbar_sel && ~eq)
+        fail <= 1'b1;
+end
+    
+    endmodule

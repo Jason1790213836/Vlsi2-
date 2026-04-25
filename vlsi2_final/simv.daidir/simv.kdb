@@ -23,3 +23,7 @@ WREALZ=ffff534e50535f5a
 
 [CompInfo]
 FLOW_OPTS=-kdb -ssv -ssy 
+MSG1=Warning-[KDB-ELAB-E] Verdi KDB elaboration with error
+  Verdi KDB elaboration finished with 10 error(s) and 0 warning(s).
+  Please look at this Verdi elaboration log file for details. 
+  /home/lx2349/vlsi2/vlsi2_final/simv.daidir/elabcomLog/compiler.log

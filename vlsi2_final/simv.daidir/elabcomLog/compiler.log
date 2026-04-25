@@ -1,3 +1,33 @@
 *design* DebussyLib (btIdent Verdi_U-2023.03-SP2-5)
 Command arguments:  -lib  simv.daidir/work  -saveLevel  -elab  simv.daidir/kdb  -simflow  -simdir  simv.daidir/kdb_libs  -topfile  simv.daidir/.elabcomTopFile  -ssv  -ssy  -Lf  work  +disable_message+C00380+C00381  +disable_message+C00388+C00389  -SNPS_ELABCOM  -saveElab 
-Total	0 error(s),   0 warning(s)
+
+*Error* failed to find identifier dut.u_sram.ram[6'd10]
+"tb_bist.sv", 62: 
+
+*Error* failed to find identifier dut.u_sram.ram[6'd10]
+"tb_bist.sv", 68: 
+
+*Error* failed to find identifier dut.u_sram.ram[6'd10]
+"tb_bist.sv", 73: 
+
+*Error* view controller is not defined for instance u_controller
+"bist.sv", 31: 
+
+*Error* view counter is not defined for instance u_counter
+"bist.sv", 40: 
+
+*Error* view decoder is not defined for instance u_decoder
+"bist.sv", 50: 
+
+*Error* view multiplexer is not defined for instance u_addr_mux
+"bist.sv", 55: 
+
+*Error* view multiplexer is not defined for instance u_data_mux
+"bist.sv", 62: 
+
+*Error* view sram is not defined for instance u_sram
+"bist.sv", 72: 
+
+*Error* view comparator is not defined for instance u_comparator
+"bist.sv", 81: 
+Total	10 error(s),   0 warning(s)

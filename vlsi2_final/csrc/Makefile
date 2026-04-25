@@ -49,7 +49,7 @@ CRT0=
 # C run time startup
 CRTN=
 # Machine specific libraries
-SYSLIBS=/eda/synopsys/verdi/U-2023.03-SP2-5/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl
+SYSLIBS=-ldl  -lc -lm -lpthread -ldl
 
 # Default defines
 SHELL=/bin/sh

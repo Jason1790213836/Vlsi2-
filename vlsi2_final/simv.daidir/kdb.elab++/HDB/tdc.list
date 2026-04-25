@@ -1,8 +1,2 @@
 bist.sv
-comparator.sv
-controller.sv
-counter.sv
-decoder.sv
-multiplexer.sv
-sram.sv
 tb_bist.sv
