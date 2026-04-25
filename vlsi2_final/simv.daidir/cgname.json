@@ -5,11 +5,11 @@
         "module",
         1
     ],
-    "tb_controller": [
-        "tb_controller",
-        "IAKFK",
+    "tb_sram": [
+        "tb_sram",
+        "EdF8P",
         "module",
-        2
+        4
     ],
     "...MASTER...": [
         "SIM",

@@ -1,2 +1,2 @@
-controller.sv
-tb_controller.sv
+sram.sv
+tb_sram.sv
