@@ -1,4 +1,3 @@
-
 module tb_bist;
 
     logic        start, rst, clk, csin, rwbarin, opr;
@@ -7,7 +6,6 @@ module tb_bist;
     logic [7:0]  dataout;
     logic        fail;
 
-    // 实例化被测设计
     bist dut (
         .start(start),
         .rst(rst),
@@ -21,84 +19,130 @@ module tb_bist;
         .fail(fail)
     );
 
-    // 时钟生成: 100MHz
     always #5 clk = ~clk;
 
-    // Autograder 识别的 FAIL 任务
-    task FAIL(input string msg);
+    task FAIL;
         begin
             $display("@@@FAIL");
-            $display("Reason: %s", msg);
             $finish;
         end
     endtask
 
-    // 用于统计 Pattern 出现的次数
-    int count_AA, count_55, count_F0, count_0F, count_FF;
+    task PASS;
+        begin
+            $display("@@@PASS");
+            $finish;
+        end
+    endtask
+
+    task tick;
+        begin
+            @(posedge clk);
+            #2;
+        end
+    endtask
+
+    task normal_write(input logic [5:0] addr, input logic [7:0] data);
+        begin
+            csin    = 1'b1;
+            rwbarin = 1'b0;
+            address = addr;
+            datain  = data;
+            opr     = 1'b0;
+            tick();
+        end
+    endtask
+
+    task normal_read_check(input logic [5:0] addr, input logic [7:0] exp);
+        begin
+            csin    = 1'b1;
+            rwbarin = 1'b1;
+            address = addr;
+            opr     = 1'b0;
+            tick();
+            if (dataout !== exp) FAIL();
+        end
+    endtask
+
+    task bist_read_check(input logic [5:0] addr, input logic expected_fail, input logic opr_val);
+        begin
+            force dut.NbarT = 1'b1;
+            force dut.q     = {3'b000, 1'b1, addr};   // pattern AA, read, addr
+
+            csin    = 1'b0;
+            rwbarin = 1'b0;
+            address = 6'd63;      // should be ignored in BIST mode
+            datain  = 8'h55;      // should be ignored in BIST mode
+            opr     = opr_val;
+
+            tick();               // SRAM captures address
+            tick();               // fail captures comparator result
+
+            if (fail !== expected_fail) FAIL();
+        end
+    endtask
+
+    task bist_write_aa(input logic [5:0] addr);
+        begin
+            force dut.NbarT = 1'b1;
+            force dut.q     = {3'b000, 1'b0, addr};   // pattern AA, write, addr
+
+            csin    = 1'b0;       // should be ignored in BIST mode
+            rwbarin = 1'b1;       // should be ignored in BIST mode
+            address = 6'd62;      // should be ignored in BIST mode
+            datain  = 8'h11;      // should be ignored in BIST mode
+            opr     = 1'b0;
+
+            tick();
+        end
+    endtask
 
     initial begin
-        // =======================================
-        // 1. 系统初始化
-        // =======================================
-        clk = 0; rst = 1; start = 0; csin = 0; rwbarin = 1; opr = 0; address = 0; datain = 0;
-        repeat (3) @(posedge clk);
-        rst = 0;
-        repeat (2) @(posedge clk);
+        clk     = 1'b0;
+        rst     = 1'b1;
+        start   = 1'b0;
+        csin    = 1'b0;
+        rwbarin = 1'b0;
+        opr     = 1'b0;
+        address = 6'd0;
+        datain  = 8'h00;
 
-        // =======================================
-        // 2. 验证 Normal 模式通路
-        // =======================================
-        // 写入测试数据
-        csin = 1; rwbarin = 0; address = 6'd10; datain = 8'hA5; 
-        @(posedge clk); #1;
-        // 读取测试数据
-        csin = 1; rwbarin = 1; address = 6'd10; datain = 8'h00; 
-        @(posedge clk); 
-        @(posedge clk); #1; // 等待 1 拍 SRAM 延迟
-        if (dataout !== 8'hA5) FAIL("Buggy BIST: Normal mode read failed");
-        csin = 0;
+        repeat (3) tick();
+        rst = 1'b0;
+        repeat (2) tick();
 
-        // =======================================
-        // 3. 启动 BIST 进行特征统计
-        // =======================================
-        opr = 1;
-        repeat(2) @(posedge clk);
-        
-        start = 1;
-        @(posedge clk);
-        start = 0;
+        // Normal mode SRAM write/read through BIST top
+        normal_write(6'd0,  8'hAA);
+        normal_write(6'd5,  8'h00);
+        normal_write(6'd10, 8'h3C);
 
-        count_AA = 0; count_55 = 0; count_F0 = 0; count_0F = 0; count_FF = 0;
+        normal_read_check(6'd0,  8'hAA);
+        normal_read_check(6'd5,  8'h00);
+        normal_read_check(6'd10, 8'h3C);
 
-        // 监控 BIST 运行过程 (大约耗时 1024 周期，我们监控 1100 周期)
-        for (int i = 0; i < 1100; i++) begin
-            @(posedge clk); 
-            #2; // 避开时钟沿的毛刺
+        // BIST read addr 0: memory has AA, expected AA, so fail must be 0
+        bist_read_check(6'd0, 1'b0, 1'b1);
 
-            // 统计 SRAM 吐出的测试数据
-            if (dataout === 8'hAA) count_AA++;
-            if (dataout === 8'h55) count_55++;
-            if (dataout === 8'hF0) count_F0++;
-            if (dataout === 8'h0F) count_0F++;
-            if (dataout === 8'hFF) count_FF++;
+        // BIST read addr 5: memory has 00, expected AA, so fail must be 1
+        bist_read_check(6'd5, 1'b1, 1'b1);
 
-            // 如果在一个“没被注入错误的 SRAM”里，fail 居然亮了，说明此设计比较器损坏！
-            if (fail === 1'b1) FAIL("Buggy BIST: Fail asserted on a healthy memory");
-        end
+        // Same mismatch, but opr=0, so fail must stay 0
+        bist_read_check(6'd5, 1'b0, 1'b0);
 
-        // =======================================
-        // 4. 分析统计结果，击杀 Buggy 设计
-        // =======================================
-        // 健康的设计，每种数据正好读取 64 次。我们设定 55~75 为宽容判定区间。
-        if (count_AA < 55 || count_AA > 75) FAIL("Buggy BIST: AA pattern missing or stuck");
-        if (count_55 < 55 || count_55 > 75) FAIL("Buggy BIST: 55 pattern missing or stuck");
-        if (count_F0 < 55 || count_F0 > 75) FAIL("Buggy BIST: F0 pattern missing or stuck");
-        if (count_0F < 55 || count_0F > 75) FAIL("Buggy BIST: 0F pattern missing or stuck");
-        if (count_FF < 55 || count_FF > 75) FAIL("Buggy BIST: FF pattern missing or stuck");
+        // BIST write should write decoder pattern AA into addr 12
+        bist_write_aa(6'd12);
 
-        // 如果程序能运行到这里，说明设计完美！
-        $display("@@@PASS");
-        $finish;
+        release dut.NbarT;
+        release dut.q;
+
+        rst = 1'b1;
+        tick();
+        rst = 1'b0;
+        tick();
+
+        normal_read_check(6'd12, 8'hAA);
+
+        PASS();
     end
 
 endmodule

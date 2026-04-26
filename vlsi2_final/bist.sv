@@ -88,29 +88,11 @@ module bist #(
 
     assign dataout = ramout;
 
-// 修改后的 fail 逻辑
     always_ff @(posedge clk) begin
-        if (rst) begin
-            data_t_d <= '0;
-            rwbar_d  <= 1'b0;
-            NbarT_d  <= 1'b0;
-            opr_d    <= 1'b0;
-            fail     <= 1'b0;
-        end else begin
-            // 打拍对齐时序
-            data_t_d <= data_t;
-            rwbar_d  <= rwbar_sel;
-            NbarT_d  <= NbarT;
-            opr_d    <= opr;
-
-            // 只有当 BIST 运行且处于读周期(rwbar_d=1)时才比较
-            // 注意：取消 else fail <= 0，让 fail 一旦变 1 就保持住
-            if (NbarT_d && rwbar_d) begin
-                if (ramout !== data_t_d) begin
-                    fail <= 1'b1; 
-                end
-            end
-        end
+        if (NbarT && opr && rwbar_sel && ~eq)
+            fail <= 1'b1;
+        else
+            fail <= 1'b0;
     end
 
 endmodule
