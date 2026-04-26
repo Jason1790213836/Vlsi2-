@@ -64,19 +64,23 @@ module tb_bist;
         end
     endtask
 
-    task bist_read_check(input logic [5:0] addr, input logic expected_fail, input logic opr_val);
+    task bist_read_check(
+        input logic [5:0] addr,
+        input logic expected_fail,
+        input logic opr_val
+    );
         begin
             force dut.NbarT = 1'b1;
-            force dut.q     = {3'b000, 1'b1, addr};   // pattern AA, read, addr
+            force dut.q     = {3'b000, 1'b1, addr};
 
             csin    = 1'b0;
             rwbarin = 1'b0;
-            address = 6'd63;      // should be ignored in BIST mode
-            datain  = 8'h55;      // should be ignored in BIST mode
+            address = 6'd63;
+            datain  = 8'h55;
             opr     = opr_val;
 
-            tick();               // SRAM captures address
-            tick();               // fail captures comparator result
+            tick();
+            tick();
 
             if (fail !== expected_fail) FAIL();
         end
@@ -85,12 +89,12 @@ module tb_bist;
     task bist_write_aa(input logic [5:0] addr);
         begin
             force dut.NbarT = 1'b1;
-            force dut.q     = {3'b000, 1'b0, addr};   // pattern AA, write, addr
+            force dut.q     = {3'b000, 1'b0, addr};
 
-            csin    = 1'b0;       // should be ignored in BIST mode
-            rwbarin = 1'b1;       // should be ignored in BIST mode
-            address = 6'd62;      // should be ignored in BIST mode
-            datain  = 8'h11;      // should be ignored in BIST mode
+            csin    = 1'b0;
+            rwbarin = 1'b1;
+            address = 6'd62;
+            datain  = 8'h11;
             opr     = 1'b0;
 
             tick();
@@ -108,10 +112,11 @@ module tb_bist;
         datain  = 8'h00;
 
         repeat (3) tick();
+
         rst = 1'b0;
         repeat (2) tick();
 
-        // Normal mode SRAM write/read through BIST top
+        // Normal mode write/read
         normal_write(6'd0,  8'hAA);
         normal_write(6'd5,  8'h00);
         normal_write(6'd10, 8'h3C);
@@ -120,16 +125,16 @@ module tb_bist;
         normal_read_check(6'd5,  8'h00);
         normal_read_check(6'd10, 8'h3C);
 
-        // BIST read addr 0: memory has AA, expected AA, so fail must be 0
+        // BIST read: expected AA, memory has AA -> fail = 0
         bist_read_check(6'd0, 1'b0, 1'b1);
 
-        // BIST read addr 5: memory has 00, expected AA, so fail must be 1
+        // BIST read: expected AA, memory has 00 -> fail = 1
         bist_read_check(6'd5, 1'b1, 1'b1);
 
-        // Same mismatch, but opr=0, so fail must stay 0
+        // Same mismatch, but opr = 0 -> fail = 0
         bist_read_check(6'd5, 1'b0, 1'b0);
 
-        // BIST write should write decoder pattern AA into addr 12
+        // BIST write should write AA into address 12
         bist_write_aa(6'd12);
 
         release dut.NbarT;
@@ -141,6 +146,30 @@ module tb_bist;
         tick();
 
         normal_read_check(6'd12, 8'hAA);
+
+        // Check real controller behavior
+        rst   = 1'b1;
+        start = 1'b0;
+        tick();
+
+        rst = 1'b0;
+        tick();
+
+        start = 1'b1;
+        tick();
+
+        start = 1'b0;
+        tick();
+
+        if (dut.NbarT !== 1'b1) FAIL();
+
+        force dut.cout = 1'b1;
+        tick();
+        tick();
+
+        if (dut.NbarT !== 1'b0) FAIL();
+
+        release dut.cout;
 
         PASS();
     end
