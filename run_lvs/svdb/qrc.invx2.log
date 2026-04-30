@@ -1,0 +1,77 @@
+
+
+  Cadence Quantus Extraction - 64-bit Parasitic Extractor - Version
+25.1.0-p047 Thu Dec 11 23:50:19 PST 2025
+---------------------------------------------------------------------------------------------------------------
+                                  Copyright 2025 Cadence Design Systems,
+Inc.
+
+
+
+INFO (EXTQRCXLOG-128) : Quantus command line:
+ Started at: 2026-Apr-29 14:54:18 (2026-Apr-29 18:54:18 GMT)
+ Executable:
+/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit/quantus
+ Options:     -log_file /home/lx2349/vlsi2/run_lvs/svdb/qrc.invx2.log -cmd
+/home/lx2349/vlsi2/run_lvs/svdb/qrc.invx2.ccl
+ Current working directory: /home/lx2349/vlsi2
+
+
+INFO (EXTQRCXLOG-103) : The Command File Options for the current Quantus run are as follows:
+
+capacitance \
+	 -decoupling_factor 1.0 \
+	 -ground_net "VSS"
+device_reduction \
+	 -m_factor infinite
+extract \
+	 -selection "all" \
+	 -type "rc_coupled"
+extraction_setup \
+	 -array_vias_spacing "auto" \
+	 -max_fracture_length infinite \
+	 -max_fracture_length_unit "MICRONS" \
+	 -net_name_space "LAYOUT" \
+	 -split_via_by_unit_area false
+filter_coupling_cap \
+	 -coupling_cap_threshold_absolute 0.01 \
+	 -coupling_cap_threshold_relative 0.001
+filter_res \
+	 -merge_parallel_res false \
+	 -min_res 0.001
+input_db -type pvs \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -hierarchy_delimiter "/" \
+	 -library_definitions_file "/home/lx2349/vlsi2/cds.lib" \
+	 -run_name "invx2"
+log_file \
+	 -file_name "/home/lx2349/vlsi2/run_lvs/svdb/qrc.invx2.log"
+output_db -type dspf \
+	 -add_bulk_terminal "false" \
+	 -busbit_delimiter "\[\]" \
+	 -disable_instances false \
+	 -hierarchy_delimiter "/" \
+	 -include_cap_model "false" \
+	 -include_parasitic_cap_model "true" \
+	 -include_parasitic_res_model "comment" \
+	 -include_res_model "false" \
+	 -netlist_coupling_values "double" \
+	 -sub_node_char "#"
+output_setup \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -file_name "/home/lx2349/vlsi2/invx2.dspf" \
+	 -net_name_space "LAYOUT" \
+	 -temporary_directory_name "invx2"
+process_technology \
+	 -technology_corner \
+		"rcx_worst" \
+	 -technology_library_file "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib" \
+	 -technology_name "gpdk045_pvs" \
+	 -temperature \
+		"25.0"
+
+  ERROR (LBRCXM-522): File '/home/lx2349/vlsi2/run_lvs/svdb/invx2.lvsfile' does not exist
+  
+  ERROR (LBRCXM-709): *****  Quantus terminated abnormally  *****
+  
+  

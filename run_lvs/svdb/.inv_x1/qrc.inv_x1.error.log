@@ -1,0 +1,8 @@
+ERROR (EXTQRCOUT-222127): The input library: my_inv does not exist
+
+ERROR (LBRCXU-111): Warning /eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit/qrcToOA exit with bad status
+
+ERROR (LBRCXU-112): Warning Status 134
+
+ERROR (LBRCXU-268): Quantus execution terminated abnormally
+

@@ -1,0 +1,4 @@
+IN	metal1_0conn	60	1460
+VSS	metal1_0conn	1460	60
+VDD	metal1_0conn	1460	2860
+OUT	metal1_0conn	2860	1460

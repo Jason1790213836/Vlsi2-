@@ -1,0 +1,55 @@
+avParameters(
+	?cellName "my_inv_sch"
+	?viewName "layout"
+	?inputLayout ( "DFII" "my_inv" )
+	?cdslib "/home/lx2349/vlsi2/cds.lib"
+	?workingDirectory "/home/lx2349/vlsi2/run_lvs/svdb"
+	?techRuleSet ( "rcx_worst" )
+	?techLib "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib"
+	?technology "gpdk045_pvs"
+
+)
+rcxParameters(
+	?capCouplingFactor 1.0
+	?capGround "VSS"
+	?mFactorR "infinite"
+	?arrayViasSpacing "auto"
+	?maxFractureLength "infinite"
+	?fractureLengthUnits "MICRONS"
+	?netNameSpace "layout"
+	?minC 1e-17
+	?minCByPercentage 0.1
+	?mergeParallelR nil
+	?minR 0.001
+	?pvsRunDir "/home/lx2349/vlsi2/run_lvs/svdb"
+	?pvsPrimary "inv_x1"
+	?lvsSource "pvs"
+	?addBulkTerminal "yes"
+	?cdloutRunDir ( "/home/lx2349/vlsi2/run_lvs" )
+	?checkCellView nil
+	?libDirectory "."
+	?capModels "no"
+	?parasiticCapModels "yes"
+	?parasiticResModels "comment"
+	?resModels "no"
+	?xyCoordinates ( "C" "R" "D" "M" "Q" "X" )
+	?resistor "presistor"
+	?xdspf t
+	?EV2flow t
+	?outputFormat "spice"
+	?lvsExtractedCellView nil
+	?extractedView "sv_extracted"
+	?output "/home/lx2349/vlsi2/run_lvs/svdb/inv_x1/rcx.sp"
+	?outputNetNameSpace "layout"
+	?runName "inv_x1"
+	?tempdir "/home/lx2349/vlsi2/run_lvs/svdb/inv_x1/rcx_temp"
+	?rcxSetupDir ( "/ip/cadence/gpdk045/gpdk045_v_6_0/./pvs/../qrc/rcworst" )
+	?temperature ( 25.0 )
+	?type "full"
+	?extract "both"
+	?capExtractMode "coupled"
+
+)
+(avRCX)
+
+

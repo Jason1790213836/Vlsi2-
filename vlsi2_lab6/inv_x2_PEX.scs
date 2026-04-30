@@ -1,0 +1,36 @@
+// Generated for: spectre
+// Generated on: Apr 29 20:51:18 2026
+// Design library name: ece6443lib
+// Design cell name: inv_tb
+// Design view name: config
+simulator lang=spectre
+global 0
+parameters vdd=1 vss=0
+include "/ALL_PDK/gpdk045_v_6_0/gpdk045/../models/spectre/gpdk045.scs" section=mc
+
+// Library name: ece6443lib
+// Cell name: inv_tb
+// View name: schematic
+// Inherited view list: spectre cmos_sch cmos.sch schematic veriloga ahdl
+// pspice dspf
+V2 (VSS 0) vsource dc=vss type=dc
+V1 (VDD 0) vsource dc=vdd type=dc
+V0 (IN 0) vsource type=pulse val0=1 val1=0 period=1u rise=5p fall=5p \
+        width=500n
+I3 (IN OUT VDD VSS) inv_x2
+C0 (OUT 0) capacitor c=2f
+simulatorOptions options psfversion="1.4.0" reltol=1e-3 vabstol=1e-6 \
+    iabstol=1e-12 temp=27 tnom=27 scalem=1.0 scale=1.0 gmin=1e-12 rforce=1 \
+    maxnotes=5 maxwarns=5 digits=5 cols=80 pivrel=1e-3 \
+    sensfile="../psf/sens.output" checklimitdest=psf 
+tran tran stop=10u errpreset=moderate write="spectre.ic" \
+    writefinal="spectre.fc" annotate=status maxiters=5 
+finalTimeOP info what=oppoint where=rawfile
+modelParameter info what=models where=rawfile
+element info what=inst where=rawfile
+outputParameter info what=output where=rawfile
+designParamVals info what=parameters where=rawfile
+primitives info what=primitives where=rawfile
+subckts info what=subckts where=rawfile
+saveOptions options save=allpub
+dspf_include "/home/lx2349/simulation/inv_tb/SmartViewDSPF/ece6443lib_inv_x2_sv_extracted/inv_x2.dspf"

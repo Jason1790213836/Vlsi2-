@@ -1,0 +1,28 @@
+
+
+***********************************************************
+* CDL produced by pvsBuildNetlist on Apr 29 20:39:55 2026 *
+***********************************************************
+
+
+*pvsViewList = auCdl schematic
+*pvsStopList = ("auCdl")
+*pvsSimName  = auCdl
+
+
+
+*.EXPAND_ON_M_FACTOR
+*.MEGA
+
+
+
+.subckt inv_x2 IN OUT VDD VSS
+*PVSCELL netlisted from ece6443lib inv_x2 schematic
+  MNM0 OUT IN VSS VSS g45n1svt m=1 l=45n w=240n
+  MPM0 OUT IN VDD VDD g45p1svt m=1 l=45n w=480n
+.ends inv_x2
+
+
+***********************************************************
+*             Completed at Apr 29 20:39:55 2026           *
+***********************************************************

@@ -1,0 +1,11 @@
+INFO (CAPGEN-41199): 
+
+
+Techgen -trans results will be written to directory: /home/lx2349/vlsi2/run_lvs/svdb/inv_x1
+
+INFO (CAPGEN-41737): Lvs connect layers Bondpad CapMetal Nburied ind10 ind11 ind_ct npn_emit pnp_emit are not mapped in layer_setup file
+
+INFO (CAPGEN-41809):  Lvs connect via bp_tap ind_via_diva via10_nodev ptap ntap nb_tap are not mapped in layer_setup file.
+
+INFO (EXTQRCOUT-222125): Input Setup:    -lib: my_inv -cell: my_inv_sch -view: layout 
+

@@ -1,0 +1,66 @@
+#
+# OPTION COMMAND FILE created byCadence Quantus Extraction Version 25.1.0-p047 from CCL
+#
+capacitance \
+	 -decoupling_factor 1.0 \
+	 -ground_net "VSS"
+device_reduction \
+	 -m_factor infinite
+extract \
+	 -selection "all" \
+	 -type "rc_coupled"
+extraction_setup \
+	 -array_vias_spacing "auto" \
+	 -max_fracture_length infinite \
+	 -max_fracture_length_unit "MICRONS" \
+	 -net_name_space "LAYOUT" \
+	 -split_via_by_unit_area false
+filter_coupling_cap \
+	 -coupling_cap_threshold_absolute 0.01 \
+	 -coupling_cap_threshold_relative 0.001
+filter_res \
+	 -merge_parallel_res false \
+	 -min_res 0.001
+input_db -type pvs \
+	 -design_cell_name "my_inv_sch layout my_inv" \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -format "DFII" \
+	 -library_definitions_file "/home/lx2349/vlsi2/cds.lib" \
+	 -run_name "inv_x1"
+log_file \
+	 -file_name "/home/lx2349/vlsi2/run_lvs/svdb/qrc.inv_x1.log"
+mos_diffusion_parameter_extraction \
+	 -auto_accuracy_downgrade false
+output_db -type smart_view \
+	 -add_bulk_terminal "true" \
+	 -cdl_out_map_directory \
+		"/home/lx2349/vlsi2/run_lvs" \
+	 -enable_cellview_check false \
+	 -hierarchical_extracted_views_directory "." \
+	 -include_cap_model "false" \
+	 -include_parasitic_cap_model "true" \
+	 -include_parasitic_res_model "comment" \
+	 -include_res_model "false" \
+	 -output_xy \
+		"CANONICAL_CAP" \
+		"CANONICAL_RES" \
+		"DIODE" \
+		"MOS" \
+		"BIPOLAR" \
+		"GENERIC" \
+	 -res_component "presistor" \
+	 -view_name "sv_extracted"
+output_setup \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -file_name "/home/lx2349/vlsi2/run_lvs/svdb/inv_x1/rcx.sp" \
+	 -net_name_space "LAYOUT" \
+	 -temporary_directory_name "inv_x1"
+process_technology \
+	 -technology_corner \
+		"rcx_worst" \
+	 -technology_library_file "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib" \
+	 -technology_name "gpdk045_pvs" \
+	 -temperature \
+		"25.0"
+
+

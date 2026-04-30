@@ -1,0 +1,16 @@
+case	"preserve"
+convertDot	"node"
+convertPin	"geometryAndText"
+hierDepth	32
+labelCase	"preserve"
+labelDepth	32
+library	"ece6443lib"
+logFile	"/home/lx2349/vlsi2/run_lvs/PIPO1.LOG"
+maxVertices	2048
+pinAttNum	0
+runDir	"/home/lx2349/vlsi2/run_lvs"
+strmFile	"/home/lx2349/vlsi2/run_lvs/inv_x1.gds"
+strmVersion	5
+techLib	"ece6443lib"
+topCell	"inv_x1"
+view	"layout"

@@ -1,0 +1,17 @@
+
+/eda/cadence/PVS231/tools.lnx86/pvs/bin/64bit/edbToEcdb Output Summary
+========================================================================
+
+Delete EDB      : N
+EDB Library dir : inv_x2_633518.db
+ECDB dir        : ./
+Top Cell        : inv_x2
+CDL netlist     : /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.net
+Layer map file  : /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.ecdbmap
+Text map file   : /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.ports
+Dependency map  : inv_x2.lmap.perc
+Lvs file        : /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.lvsfile
+Float net file  : .inv_x2.info.softchk
+threads         : 32
+debug           : 0
+Source Library  : inv_x2_633518

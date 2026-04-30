@@ -1,0 +1,22 @@
+Parameters:
+	-runDir
+	/home/lx2349/vlsi2/run_lvs2
+	-ossdir
+	/home/lx2349/vlsi2/run_lvs2
+	-cellmap
+	/home/lx2349/vlsi2/run_lvs2/lay_cellMap.txt
+	-ppid
+	603725
+	-form
+	-viewer
+	virtuoso
+	-schview
+	schematic
+	-tag
+	unknown
+
+
+Checking out SoftShare license Phys_Ver_Sys_Results_Mgr 23.1 Qty: 1 ... failed.
+Checking out SoftShare license Pegasus_RV 23.1 Qty: 1 ... succeeded (1s).
+starting pvsProbeServer: port= 54939
+Starting probe server on port: 54939

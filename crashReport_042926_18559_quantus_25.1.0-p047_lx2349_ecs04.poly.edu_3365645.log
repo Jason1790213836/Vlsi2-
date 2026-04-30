@@ -1,0 +1,235 @@
+Crashed Executable Name: /eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit/qrcToOA 
+
+crash_log.c: === Backtrace Information ==
+
+crash_log.c: CCLFile Settings 
+#
+# OPTION COMMAND FILE created byCadence Quantus Extraction Version 25.1.0-p047 from CCL
+#
+capacitance \
+	 -decoupling_factor 1.0 \
+	 -ground_net "VSS"
+device_reduction \
+	 -m_factor infinite
+extract \
+	 -selection "all" \
+	 -type "rc_coupled"
+extraction_setup \
+	 -array_vias_spacing "auto" \
+	 -max_fracture_length infinite \
+	 -max_fracture_length_unit "MICRONS" \
+	 -net_name_space "LAYOUT" \
+	 -split_via_by_unit_area false
+filter_coupling_cap \
+	 -coupling_cap_threshold_absolute 0.01 \
+	 -coupling_cap_threshold_relative 0.001
+filter_res \
+	 -merge_parallel_res false \
+	 -min_res 0.001
+input_db -type pvs \
+	 -design_cell_name "my_inv_sch layout my_inv" \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -format "DFII" \
+	 -library_definitions_file "/home/lx2349/vlsi2/cds.lib" \
+	 -run_name "inv_x1"
+log_file \
+	 -file_name "/home/lx2349/vlsi2/run_lvs/svdb/qrc.inv_x1.log"
+mos_diffusion_parameter_extraction \
+	 -auto_accuracy_downgrade false
+output_db -type smart_view \
+	 -add_bulk_terminal "true" \
+	 -cdl_out_map_directory \
+		"/home/lx2349/vlsi2/run_lvs" \
+	 -enable_cellview_check false \
+	 -hierarchical_extracted_views_directory "." \
+	 -include_cap_model "false" \
+	 -include_parasitic_cap_model "true" \
+	 -include_parasitic_res_model "comment" \
+	 -include_res_model "false" \
+	 -output_xy \
+		"CANONICAL_CAP" \
+		"CANONICAL_RES" \
+		"DIODE" \
+		"MOS" \
+		"BIPOLAR" \
+		"GENERIC" \
+	 -res_component "presistor" \
+	 -view_name "sv_extracted"
+output_setup \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs/svdb" \
+	 -file_name "/home/lx2349/vlsi2/run_lvs/svdb/inv_x1/rcx.sp" \
+	 -net_name_space "LAYOUT" \
+	 -temporary_directory_name "inv_x1"
+process_technology \
+	 -technology_corner \
+		"rcx_worst" \
+	 -technology_library_file "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib" \
+	 -technology_name "gpdk045_pvs" \
+	 -temperature \
+		"25.0"
+
+
+
+crash_log.c: Environment Variables 
+
+_=*3365284*/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit/quantus
+AMBIT_BDF_PATH=/eda/cadence/IC618/etc/syntechEtc/bdfc
+AMBIT_MSG_PATH=/eda/cadence/IC618/etc/syntechEtc/msgc
+CALIBRE_HOME=/eda/mentor/Calibre/aok_cal_2024.2_29.16
+CC_HOME=/eda/synopsys/customcompiler/V-2023.12-SP1-3
+CDK_DIR=/eda/cadence/local/ncsu-cdk-1.6.0.beta
+CDN_PERL=/eda/cadence/QUANTUS251/tools.lnx86/perl/
+CDS=/eda/cadence/
+CDSHOME=/eda/cadence/IC618
+CDSROOT=/eda/cadence/IC618
+CDS_ARCH=lnx86
+CDS_AUTO_64BIT=ALL
+CDS_DIR=/eda/cadence/IC618/tools
+CDS_HOME=/eda/cadence/IC618
+CDS_INST_ROOT=/eda/cadence/IC618
+CDS_LANG=en_US.UTF-8
+CDS_LIC_FILE=5281@pyke.poly.edu:/opt/cadence/License/cadence_2022_july.lic
+CDS_MPS_SESSION=virtuoso2257400
+CDS_Netlisting_Mode=Analog
+CDS_PERFDEBUG_DATA=/eda/cadence/IC618/tools.lnx86/dfII/samples/perfUtil/data/DebugData
+CDS_PERFDEBUG_LIBDIR=/eda/cadence/IC618/tools.lnx86/dfII/samples/perfUtil/lib
+CDS_PERFDEBUG_TOOLLIBDIR=/eda/cadence/IC618/tools/lib/64bit
+CDS_SET_LOCALE=C
+CDS_SITE=/eda/cadence/local
+CDS_USE_XVFB=1
+CDS_W3264_LIBPATH=/eda/cadence/QUANTUS251/tools.lnx86/TPtools/libstdc++6/lib/64bit:/eda/cadence/QUANTUS251/share/oa/lib/lnx86/opt:/eda/cadence/QUANTUS251/tools.lnx86/extlibs/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/extPython/lib:/eda/cadence/QUANTUS251/tools.lnx86/openmpi-4.1.1/lib:/eda/cadence/QUANTUS251/tools.lnx86/zmq/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/mesa/lib64:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/gperftools/lib64:/eda/cadence/QUANTUS251/share/extraction/lib/tcltk:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/libffi/lib64:/eda/cadence/QUANTUS251/tools.lnx86/stylus/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/lib/64bit:/eda/cadence/QUANTUS251/tools.lnx86/lib:/eda/cadence/QUANTUS251/tools.lnx86/lib/64bit/RHEL/RHEL8
+CLS_CDSD_COMPATIBILITY_LOCKING=NO
+COLORTERM=truecolor
+CORNERS_INST_DIR=/eda/cadence/IC618/share/java/COM/cadence/seaStars/corners
+CTU_CDSENV_SETTINGS=1
+CTU_COMMON_SETTINGS_VIRTUOSO=1
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-HMbDdYRnbg,guid=7372610034ca861f68bfc05869f228d3
+DISPLAY=:110
+FASTX_SESSION_DIR=/home/lx2349/.fastx_server/ecs04.poly.edu/sessions/FX3-1bfe670bbe774d3287773c460e6a4e4b
+FASTX_SESSION_ID=1bfe670bbe774d3287773c460e6a4e4b
+GJS_DEBUG_OUTPUT=stderr
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/a5295cf1_a806_4715_9bae_d96b4669197d
+GNOME_TERMINAL_SERVICE=:1.74
+GPDK045_PDK_PATH=/ALL_PDK/gpdk045_v_6_0/
+GROUP=lx2349
+HOME=/home/lx2349
+HOST=ecs04.poly.edu
+HOSTNAME=ecs04.poly.edu
+HOSTTYPE=x86_64-linux
+HSP_HOME=/eda/synopsys/hspice/V-2023.12-SP1-1
+ICC_HOME=/eda/synopsys/icc2/T-2022.03-SP2-1
+JASPER_HOME=/eda/cadence/jasper
+LANG=C
+LC_ALL=C
+LC_HOME=/eda/synopsys/lc/W-2024.09
+LD_LIBRARY_PATH=/eda/cadence/QUANTUS251/tools.lnx86/assura/lib/64bit:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/libstdc++6/lib/64bit:/eda/cadence/QUANTUS251/share/oa/lib/lnx86/opt:/eda/cadence/QUANTUS251/tools.lnx86/extlibs/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/extPython/lib:/eda/cadence/QUANTUS251/tools.lnx86/openmpi-4.1.1/lib:/eda/cadence/QUANTUS251/tools.lnx86/zmq/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/mesa/lib64:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/gperftools/lib64:/eda/cadence/QUANTUS251/share/extraction/lib/tcltk:/eda/cadence/QUANTUS251/tools.lnx86/TPtools/libffi/lib64:/eda/cadence/QUANTUS251/tools.lnx86/stylus/lib//64bit:/eda/cadence/QUANTUS251/tools.lnx86/lib/64bit:/eda/cadence/QUANTUS251/tools.lnx86/lib:/eda/cadence/QUANTUS251/tools.lnx86/lib/64bit/RHEL/RHEL8:/eda/cadence/IC618/share/oa/lib/lnx86/opt:/eda/cadence/IC618/tools/dfII/lib/64bit:/eda/cadence/IC618/tools/sev/lib/64bit:/eda/cadence/IC618/tools/lib/64bit:/eda/cadence/IC618/tools/lib:/eda/cadence/IC618/tools/hdf5/lib/64bit:/eda/cadence/IC618/tools/lz4/lib/64bit:/eda/cadence/IC618/tools/python/64bit/lib:/eda/cadence/IC618/tools/inca/lib/64bit:/eda/cadence/IC618/tools/TPtools/grpc/lib64:/eda/cadence/IC618/tools/TPtools/grpc/lib:/eda/cadence/IC618/tools/Qt/v5/64bit/lib:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/lib:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/shared/lib
+LD_PRELOAD=/usr/lib64/libssl.so.1.1.1k:/usr/lib64/libcrypto.so.1.1.1k
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LM_LICENSE_FILE=27020@pyke.poly.edu
+LOADEDMODULES=
+LOGNAME=lx2349
+MACHTYPE=x86_64
+MAIL=/var/spool/mail/lx2349
+MANPATH=/usr/share/man:
+MATLAB_USE_USERPATH=1
+MGC_CALIBRE_DRC_RUNSET_FILE=./.runset.calibre.drc
+MGC_CALIBRE_LAYOUT_SERVER_NAME=Cadence:Virtuoso
+MGC_CALIBRE_LVS_RUNSET_FILE=./.runset.calibre.lvs
+MGC_CALIBRE_PEX_RUNSET_FILE=./.runset.calibre.pex
+MGC_HOME=/eda/mentor/Calibre/aok_cal_2024.2_29.16
+MGC_RVE_HILIGHT_SHORT_TEXT_CMDS=1
+MGLS_LICENSE_FILE=1717@pyke.poly.edu
+MMSIM_HOME=/eda/cadence/SPECTRE231/tools.lnx86
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULESHOME=/usr/share/Modules
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULES_USE_COMPAT_VERSION=0
+OPAL_PREFIX=/eda/cadence/QUANTUS251/tools.lnx86/openmpi-4.1.1
+OSTYPE=linux
+PARALLEL_DIR=/eda/cadence/QUANTUS251/share/extraction/lib
+PATH=/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit:/eda/cadence/QUANTUS251/bin:/eda/cadence/QUANTUS251/tools.lnx86/bin/64bit:/eda/cadence/QUANTUS251/tools.lnx86/bin:/eda/cadence/QUANTUS251/tools.lnx86/extPython-3.9.5/bin:/eda/cadence/QUANTUS251/tools.lnx86/perl//bin:/eda/cadence/IC618/bin:/eda/cadence/IC618/tools/bin/64bit:/eda/cadence/IC618/tools/bin:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/home/lx2349/.local/bin:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav:/usr/lib/fastx/3/apps:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav:/bin
+PCM_STUDIO=/eda/synopsys/pcm_studio/U-2023.06
+PDK_DIR=/ALL_PDK/gpdk045_v_6_0
+PRIME=/eda/synopsys/prime/T-2022.03-SP5-1
+PRIME_WAVE=/eda/synopsys/primewave/V-2023.12-SP1-3
+PSIM=/eda/synopsys/primesim/U-2023.03-2
+PVSHOME=/eda/cadence/PVS231
+PVS_COLOR_DIR=/eda/cadence/PVS231/tools.lnx86/pvs/samples/color_setup
+PVS_HOME=/eda/cadence/PVS231
+PWD=/home/lx2349/vlsi2
+PYTHONPATH=/usr/lib/python3.6/site-packages:/ALL_PDK/gpdk045_v_6_0/ncsu_basekit/techfile/cni
+QRC_HOME=/eda/cadence/QUANTUS251
+QT_IM_MODULE=ibus
+QT_XCB_NO_XI2_MOUSE=1
+SENTAURUS=/eda/synopsys/sentaurus/U-2022.12-SP1
+SHELL=/bin/tcsh
+SHLVL=9
+SNPSLMD_LICENSE_FILE=27020@pyke.poly.edu
+SPLX_EXEC_HOME=/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SSH_AUTH_SOCK=/run/user/4531049/keyring/ssh
+SSH_CLIENT=127.0.0.1 53660 3322
+SUBSTRATESTORMHOME=/eda/cadence/ASSURA
+SUBSTRATESTORMSITE=/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib
+SYN_HOME=/eda/synopsys/syn/W-2024.09-SP5-5
+TCL_LIBRARY=/eda/cadence/IC618/tools/TPtools/tcltk/tcl8.6/library
+TERM=xterm-256color
+TXS=/eda/synopsys/txs/U-2022.12-SP4
+UNL_NLPROC_INCLUDE=YES
+USER=lx2349
+USE_CALIBRE_VCO=aok
+VCA_ENABLE_CSM=15
+VCS_HOME=/eda/synopsys/vcs/U-2023.03-SP2-5
+VC_STATIC_HOME=/eda/synopsys/vc_static/U-2023.03-SP2-5
+VENDOR=unknown
+VERDI_HOME=/eda/synopsys/verdi/U-2023.03-SP2-5
+VTE_VERSION=5204
+Virtuoso_IPVS_Info=yes
+Virtuoso_IPVS_version=2
+W3264_ENV=/home/lx2349/.kshrc
+W3264_NO_HOST_CHECK=1
+W3264_PS_COMPAT_LIBDIR=/eda/cadence/QUANTUS251/tools.lnx86/lib/64bit/RHEL/RHEL8
+W3264_STORED_HOSTID=ee805193
+W3264_USER_LIBPATH=/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/lib:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/shared/lib:
+W3264_USER_PATH=/usr/lib64:/eda/cadence/QUANTUS251/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/home/lx2349/.local/bin:/usr/lib64:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/SPECTRE231/tools.lnx86/bin:/eda/cadence/SPECTRE231/tools.lnx86/dfII/bin:/eda/cadence/IC618/tools/bin:/eda/cadence/IC618/tools/dfII/bin:/eda/cadence/IC618/tools/SKILL37.00:/eda/cadence/IC618/tools/dracula/bin:/eda/cadence/PVS231/bin:/eda/cadence/PVS231/tools/bin:/eda/cadence/PVS231/tools/dfII/bin:/eda/cadence/PVS231/tools/pvs/bin:/eda/cadence/ASSURA/tools/assura/bin:/eda/cadence/IC618/share/sna/etc/cdslib/substrateLib:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav:/usr/lib/fastx/3/apps:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav:/ALL_PDK/klayout-git/bin-release:/eda/mentor/Siemens/Catapult_Synthesis_2024.1/Mgc_home/bin:/eda/mentor/Calibre/aok_cal_2024.2_29.16/bin:/usr/local/bin:/eda/synopsys/lc/W-2024.09/bin:/eda/synopsys/customcompiler/V-2023.12-SP1-3/bin:/eda/synopsys/hspice/V-2023.12-SP1-1/hspice/bin:/eda/synopsys/verdi/U-2023.03-SP2-5/bin:/eda/synopsys/vc_static/U-2023.03-SP2-5/bin:/eda/synopsys/vcs/U-2023.03-SP2-5/bin:/eda/synopsys/icc2/T-2022.03-SP2-1/bin:/eda/synopsys/syn/W-2024.09-SP5-5/bin:/eda/synopsys/pcm_studio/U-2023.06/bin:/eda/synopsys/prime/T-2022.03-SP5-1/bin:/eda/synopsys/txs/U-2022.12-SP4/bin:/eda/synopsys/primesim/U-2023.03-2/bin:/eda/synopsys/sentaurus/U-2022.12-SP1/bin:/eda/synopsys/xa/W-2024.09-SP1/bin:/eda/synopsys/primewave/V-2023.12-SP1-3/bin:/eda/synopsys/wv/R-2020.12-4/bin:/eda/xilinx//Vivado/2023.2/bin:/eda/xilinx//Vitis_HLS/2023.2/bin:/eda/xilinx//DocNav
+WV_HOME=/eda/synopsys/wv/R-2020.12-4
+XA_HOME=/eda/synopsys/xa/W-2024.09-SP1
+XDG_CURRENT_DESKTOP=GNOME
+XDG_MENU_PREFIX=gnome-
+XDG_RUNTIME_DIR=/run/user/4531049
+XDG_SESSION_ID=3270
+XILINX=/eda/xilinx/
+XILINXD_LICENSE_FILE=2100@pyke.poly.edu
+XMODIFIERS=@im=ibus
+__DFII_INTEG_NC_PATH__=/eda/cadence/IC618/tools/inca/bin/64bit
+_dfII_bin_bit=/64bit
+base_dir=/eda/cadence/
+df2BaseVhdlin=/eda/cadence/IC618
+ps3264_osid=rhel
+w3264_COMPAT_OSNAME=8
+w3264_COMPAT_OSVER=RHEL8
+w3264_osver=8
+A__z="*SHLVL
+QRC_SELECTION_LAYERS=
+QRC_SELECTIONLAYERS_FILE_TYPE_NONE=
+QRC_SELECTIONLAYERS_NETFILE_TYPE_NONE=
+QRC_SELECTIONLAYERS_GROUP_TYPE_NONE=
+QRC_UNSELECTIONLAYERS_FILE_TYPE_NONE=
+QRC_UNSELECTIONLAYERS_GROUP_TYPE_NONE=
+REMOVE_TEMP_FILE=Y
+__QUANTUS_DIAGNOSTIC_CMD_FILE__=/home/lx2349/vlsi2/run_lvs/svdb/qrc.inv_x1.ccl
+__QRC_SUM_FD__=6
+__QRC_ERRLOG_FD__=7
+__QRC_WARNLOG_FD__=8
+__QRC_COMBO_LOG_FD__=10
+__QRC_STDOUT_FD__=9
+__QRC_STDERR_FD__=11
+__QRC_DETAIL_LOG_FD__=5
+RCX_EXEC_PATH=/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit
+CDS_INST_DIR=/eda/cadence/QUANTUS251
+GOALIE2DIR=/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit
+__QRC_has_rulfile__=/ip/cadence/gpdk045/gpdk045_v_6_0/pvs/extview.rul
+ASSURA_LIC=1792051560

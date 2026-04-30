@@ -1,0 +1,68 @@
+INFO (CAPGEN-41199): 
+
+
+Techgen -trans results will be written to directory: /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2
+
+INFO (CAPGEN-41737): Lvs connect layers Bondpad CapMetal Nburied ind10 ind11 ind_ct npn_emit pnp_emit are not mapped in layer_setup file
+
+INFO (CAPGEN-41809):  Lvs connect via bp_tap ind_via_diva via10_nodev ptap ntap nb_tap are not mapped in layer_setup file.
+
+INFO (EXTQRCOUT-222125): Input Setup:    -lib: ece6443lib -cell: inv_x2 -view: layout 
+
+INFO (EXTQRCOUT-222128): Creating cellview for lib: ece6443lib cell: inv_x2 view: sv_extracted
+
+INFO (EXTQRCOUT-223081): Sanity check of Smart View for Lib: ece6443lib, Cell: inv_x2, View: sv_extracted is complete
+
+INFO (EXTQRCOUT-222128): Creating cellview for lib: ece6443lib cell: inv_x2 view: sv_extracted
+
+WARNING (AGDSEXT-30124): The <design>.props file is not available. The CCL option "input_db calibre/pvs/pegasus -device_properties_file <filename>" can be used to specify the .props file. 
+
+INFO (AGDSEXT-30016): 
+setting dbunit 5e-10 1 5e-10
+
+INFO (EXTQRCOUT-222125): Input Setup:    -lib: ece6443lib -cell: inv_x2 -view: layout 
+
+INFO (EXTQRCOUT-222100): Output initialization complete. Netlisting begins ...
+
+INFO (EXTQRCOUT-222030): Processing device mappings
+File location: /ip/cadence/gpdk045/gpdk045_v_6_0/pvs/extview.rul
+
+WARNING (EXTQRCOUT-222304): Duplicate extLayer found in extview.rul: pdiff_conn
+	Ignoring this entry
+
+WARNING (EXTQRCOUT-222304): Duplicate extLayer found in extview.rul: ndiff_conn
+	Ignoring this entry
+
+INFO (EXTQRCOUT-222031): Device mapping completed successfully
+
+INFO (EXTQRCOUT-222007): in total: 122 rcx_nodes and 4 lvs_nets
+
+INFO (EXTQRCOUT-222015): found 4 ports in current Design
+
+WARNING (EXTQRCOUT-222305): Cannot find dfII layer mapping for extLayer: mwires
+
+INFO (EXTQRCOUT-222017): in total: 0 nets are removed
+
+INFO (EXTQRCOUT-222018): summary of job:
+mos:2
+dio:0
+res:0
+bjt:0
+cap:0
+gen:0
+bbox:0
+nhcell:0
+pcap:28
+pres:11
+pind: 0
+npmutind: 0
+
+INFO (EXTQRCOUT-222024): Summary for ece6443lib/inv_x2/sv_extracted
+
+instance count totals:
+
+                 lib                cell                view               total
+             gpdk045               nmos1v              ivpcell                 1
+             gpdk045               pmos1v              ivpcell                 1
+               Total                                                           2
+

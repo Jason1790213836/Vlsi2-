@@ -1,0 +1,76 @@
+# This PVS File Index Registry was created automatically
+# Do not attempt to modify this file as any change may lead
+# to PVS Debug Environment malfunction.
+# 
+"Run Directory" internal none /home/lx2349/vlsi2/run_lvs
+"Current Directory" internal none /home/lx2349/vlsi2
+"Cadence Directory" internal none /home/lx2349/vlsi2/.cadence/
+"Job Signature" internal none IPVS_1777489250_2259399
+"PVS Job Mode" internal none lvs
+"GUI Flow" internal none virtuoso6
+"GUI Preset" internal none /home/lx2349/vlsi2/run_lvs/.preset.autosave
+"Technology Name" internal none "gpdk045_pvs"
+"Technology RuleSet" internal none "default"
+"Technology Mapping File" internal none /ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib
+"Technology Rule File" internal none /home/lx2349/vlsi2/run_lvs/.technology.rul
+"PVS Version" internal none 23.11-s036
+"Binary Name" internal none pvsgui
+"PVS Build Date" internal none "Wed Jan 17 18:11:41 PST 2024"
+"PVS Job Time" internal none 1777489252
+"DFII version" internal none 6.1.8.0
+"Rule File" input text /home/lx2349/vlsi2/run_lvs/.technology.rul
+"Layout Scale" internal none 0.0005
+"Layout TechLib" internal none ece6443lib
+"Layout Library Name" internal none ece6443lib
+"Layout Cell Name" internal none inv_x1
+"Layout View Name" internal none layout
+"Layout ConvertPin" internal text geometryAndText
+"Layout HierDepth" internal none 32
+"Layout MaxVertices" internal none 2048
+"Layout Top Cell" internal none inv_x1
+"Layout GDSII" input none /home/lx2349/vlsi2/run_lvs/inv_x1.gds
+"Intermediate GDSII File" output none /home/lx2349/vlsi2/run_lvs/inv_x1.gds
+"Intermediate GDSII File creation Errors" output none /home/lx2349/vlsi2/run_lvs/PIPO1.LOG
+"Intermediate OASIS File creation Errors" output none /home/lx2349/vlsi2/run_lvs/PIPO1.LOG
+"Layout ReplaceBusBitChar" input none nil
+"Layout NoConvertHalfWidthPath" input none nil
+"Layout FlattenPCells" input none nil
+"Schematic Library Name" internal none ece6443lib
+"Schematic Cell Name" internal none inv_x1
+"Schematic View Name" internal none schematic
+"Schematic Top Cell" internal none inv_x1
+"Schematic Netlist" input text /home/lx2349/vlsi2/run_lvs/inv_x1.cdl
+"Extracted Spice File" output text /home/lx2349/vlsi2/run_lvs/inv_x1.spi
+"Quantus QRC Data" internal none ENABLED
+"Do not check rules files before run" internal none ENABLED
+"Control File" input text /home/lx2349/vlsi2/run_lvs/pvslvsctl
+"Force to use Pegasus licences" input none ENABLED
+"CDL Out Stop List" internal text auCdl
+"CDL Out View List" internal text auCdl schematic
+"PVS Job Log" log text /home/lx2349/vlsi2/run_lvs/pvsuilvs.log
+"PIPO Setup File I" internal text /home/lx2349/vlsi2/run_lvs/pipo1.setup
+"PIPO Log I" log text /home/lx2349/vlsi2/run_lvs/PIPO1.LOG
+"PIPO Output I" internal text /home/lx2349/vlsi2/run_lvs/PIPO1.OUT
+"Input Layout" input none OA: ece6443lib inv_x1 layout
+"Input Schematic" input none OA: ece6443lib inv_x1 schematic
+"Output Layout Cellmap I" internal text /home/lx2349/vlsi2/run_lvs/lay_cellMap.txt
+"Binary Name" internal none pvsvirt
+"Comparison Report" output cls /home/lx2349/vlsi2/run_lvs/inv_x1.rep.cls
+"Extraction Report" output erc /home/lx2349/vlsi2/run_lvs/inv_x1.rep
+"Mask SVDB Directory" internal none /home/lx2349/vlsi2/run_lvs/svdb
+"QRC Top Cell" internal none inv_x1
+"LVS Report Options" internal none -none
+"SCONNECT RDB" output rdb /home/lx2349/vlsi2/run_lvs/inv_x1.softchk
+"ERC Summary" output text /home/lx2349/vlsi2/run_lvs/inv_x1.sum
+"Extraction Result" internal none CLEAN
+"ERC Result" internal none EMPTY
+"UI Data" internal none ENABLED
+"PVS Mode Info" internal none FFBCLDEMBEICIIAPCHMLOMDJEHDPOBAG
+"Report MaxResults" internal none 1000
+"Binary Name" internal none pvs
+"Comparison Result" internal none MATCH
+"LVS Run Name" internal none inv_x1.rep
+"PVS Version" internal none 23.11-s036
+"Binary Name" internal none pvsnvn
+"PVS Build Date" internal none "Wed Jan 17 18:11:41 PST 2024"
+"PVS Job Time" internal none 1777489256

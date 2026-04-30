@@ -1,0 +1,4 @@
+1777509600 0 1777509600 "/home/lx2349/vlsi2/run_lvs2" "lvsbrowser" "" "" "" "/home/lx2349/vlsi2/run_lvs2" "auCdl" "auCdl schematic" "/home/lx2349/vlsi2/run_lvs2/lay_cellMap.txt" "" "" "" "" true
+1777507696 0 1777507696 "/home/lx2349/vlsi2/run_drc2/inv_x2.drc_errors.ascii" "pvsdrcrv" "" "" "" "" "" "" "" "" "" "" "" true
+1777489257 0 1777489257 "/home/lx2349/vlsi2/run_lvs" "lvsbrowser" "" "" "" "/home/lx2349/vlsi2/run_lvs" "auCdl" "auCdl schematic" "/home/lx2349/vlsi2/run_lvs/lay_cellMap.txt" "" "" "" "" true
+1777479870 0 1777479870 "/home/lx2349/vlsi2/run_drc/inv_x1.drc_errors.ascii" "pvsdrcrv" "" "" "" "" "" "" "" "" "" "" "" true

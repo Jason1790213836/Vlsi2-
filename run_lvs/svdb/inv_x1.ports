@@ -1,0 +1,6 @@
+# SVDB: Port Table (ports)
+# SVDB: Layout Primary inv_x1
+IN 3 IN 60 1210 metal1_conn
+VSS 1 VSS 1210 60 metal1_conn
+VDD 4 VDD 1210 2360 metal1_conn
+OUT 2 OUT 2360 1210 metal1_conn

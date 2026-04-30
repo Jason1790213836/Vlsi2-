@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      lx2349
+HostName                       ecs04.poly.edu
+ProcessIdentifier              603725
+ProcessCreationTime_UTC        1777509226
+ProcessCreationTime_Readable   Wed Apr 29 20:33:46 2026 EDT
+AppIdentifier                  /eda/cadence/IC618/tools/dfII/bin/64bit/virtuoso
+OSType                         lnx86
+ReasonForPlacingEditLock       Not specified
+FilePathUsedToEditLock         /home/lx2349/vlsi2/ece6443lib/inv_tb/config/expand.cfg
+TimeEditLocked                 Wed Apr 29 21:08:29 2026 EDT

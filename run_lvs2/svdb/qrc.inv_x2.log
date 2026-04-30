@@ -1,0 +1,249 @@
+
+
+  Cadence Quantus Extraction - 64-bit Parasitic Extractor - Version
+25.1.0-p047 Thu Dec 11 23:50:19 PST 2025
+---------------------------------------------------------------------------------------------------------------
+                                  Copyright 2025 Cadence Design Systems,
+Inc.
+
+
+
+INFO (EXTQRCXLOG-128) : Quantus command line:
+ Started at: 2026-Apr-29 20:45:44 (2026-Apr-30 00:45:44 GMT)
+ Executable:
+/eda/cadence/QUANTUS251/tools.lnx86/extraction/bin/64bit/quantus
+ Options:     -log_file /home/lx2349/vlsi2/run_lvs2/svdb/qrc.inv_x2.log
+-cmd /home/lx2349/vlsi2/run_lvs2/svdb/qrc.inv_x2.ccl
+ Current working directory: /home/lx2349/vlsi2
+
+
+INFO (EXTQRCXLOG-103) : The Command File Options for the current Quantus run are as follows:
+
+capacitance \
+	 -decoupling_factor 1.0 \
+	 -ground_net "VSS"
+device_reduction \
+	 -m_factor infinite
+extract \
+	 -selection "all" \
+	 -type "rc_coupled"
+extraction_setup \
+	 -array_vias_spacing "auto" \
+	 -max_fracture_length infinite \
+	 -max_fracture_length_unit "MICRONS" \
+	 -net_name_space "LAYOUT" \
+	 -split_via_by_unit_area false
+filter_coupling_cap \
+	 -coupling_cap_threshold_absolute 0.01 \
+	 -coupling_cap_threshold_relative 0.001
+filter_res \
+	 -merge_parallel_res false \
+	 -min_res 0.001
+input_db -type pvs \
+	 -design_cell_name "inv_x2 layout ece6443lib" \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs2/svdb" \
+	 -format "DFII" \
+	 -library_definitions_file "/home/lx2349/vlsi2/cds.lib" \
+	 -run_name "inv_x2"
+log_file \
+	 -file_name "/home/lx2349/vlsi2/run_lvs2/svdb/qrc.inv_x2.log"
+mos_diffusion_parameter_extraction \
+	 -auto_accuracy_downgrade false
+output_db -type smart_view \
+	 -add_bulk_terminal "true" \
+	 -enable_cellview_check false \
+	 -hierarchical_extracted_views_directory "." \
+	 -include_cap_model "false" \
+	 -include_parasitic_cap_model "true" \
+	 -include_parasitic_res_model "comment" \
+	 -include_res_model "false" \
+	 -output_xy \
+		"CANONICAL_CAP" \
+		"CANONICAL_RES" \
+		"DIODE" \
+		"MOS" \
+		"BIPOLAR" \
+		"GENERIC" \
+	 -res_component "presistor" \
+	 -view_name "sv_extracted"
+output_setup \
+	 -directory_name "/home/lx2349/vlsi2/run_lvs2/svdb" \
+	 -file_name "/home/lx2349/vlsi2/run_lvs2/svdb/inv_x2/rcx.sp" \
+	 -net_name_space "LAYOUT" \
+	 -temporary_directory_name "inv_x2"
+process_technology \
+	 -technology_corner \
+		"rcx_worst" \
+	 -technology_library_file "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib" \
+	 -technology_name "gpdk045_pvs" \
+	 -temperature \
+		"25.0"
+
+
+WARNING (EXTQRCXOPT-424) : Schematic transfer properties will not work with "output_setup -type
+smart_view -net_name_space LAYOUT".
+
+WARNING (EXTQRCXOPT-440) : For "smart_view" output the option output_db -cdl_out_map_directory <name>
+is not specified. There could be issues with parasitic cross probing flow
+if CDL Out Run Dir is not used in the run.
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:45:46 2026: BEGIN INPUT stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:45:47 2026: DONE INPUT stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+INPUT stage summary:
+-------------------------------------------------------------------------------------
+ Number of CPUs requested:		1
+ Techfile(s):
+    /ip/cadence/gpdk045/gpdk045_v_6_0/qrc/rcworst/qrcTechFile; process name: GPDK45_rcworst
+
+ License(s) used:	QTS300 (x1)
+
+ Techgen compilation option(s):
+    -techdir /ip/cadence/gpdk045/gpdk045_v_6_0/qrc/rcworst -inc /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2/inv_x2.ilf -lvs /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2/inv_x2.xcn -p2lvs /ip/cadence/gpdk045/gpdk045_v_6_0/qrc/rcworst/qrcTechFile -reseqn -sw3d -p poly_conn,allGate,Oxide -canonical_res_caps -length_units meters -exclude_gate_res -cap_ground_layer psubstrate /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2
+
+ Input files:
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.agf
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.devtab
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.gds.map
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.ixf
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.lph
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.lvsfile
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.nxf
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.ports
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2.sph
+    /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2_pin_xy.spi
+
+ Design data:
+    global nets:                  0
+
+ Peak memory:	241 MB
+
+ Messages:
+    INFO (CAPGEN-41199): 
+    
+    
+    Techgen -trans results will be written to directory: /home/lx2349/vlsi2/run_lvs2/svdb/inv_x2
+    
+    INFO (CAPGEN-41737): Lvs connect layers Bondpad CapMetal Nburied ind10 ind11 ind_ct npn_emit pnp_emit are not mapped in layer_setup file
+    
+    INFO (CAPGEN-41809):  Lvs connect via bp_tap ind_via_diva via10_nodev ptap ntap nb_tap are not mapped in layer_setup file.
+    
+    INFO (EXTQRCOUT-222125): Input Setup:    -lib: ece6443lib -cell: inv_x2 -view: layout 
+    
+    INFO (EXTQRCOUT-222128): Creating cellview for lib: ece6443lib cell: inv_x2 view: sv_extracted
+    
+    INFO (EXTQRCOUT-223081): Sanity check of Smart View for Lib: ece6443lib, Cell: inv_x2, View: sv_extracted is complete
+    
+    INFO (EXTQRCOUT-222128): Creating cellview for lib: ece6443lib cell: inv_x2 view: sv_extracted
+    
+    WARNING (AGDSEXT-30124): The <design>.props file is not available. The CCL option "input_db calibre/pvs/pegasus -device_properties_file <filename>" can be used to specify the .props file. 
+    
+    INFO (AGDSEXT-30016): 
+    setting dbunit 5e-10 1 5e-10
+    
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:45:47 2026: BEGIN EXTRACTION stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:45:58 2026: DONE EXTRACTION stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+EXTRACTION stage summary:
+-------------------------------------------------------------------------------------
+ Design data:
+    LVS nets:                     4
+    signal nets:                  4
+    floating nets:                0
+    ground net name:              VSS
+
+ Peak memory:	241 MB
+
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:45:58 2026: BEGIN OUTPUT stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Wed Apr 29 20:46:01 2026: DONE OUTPUT stage
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+OUTPUT stage summary:
+-------------------------------------------------------------------------------------
+ Reduction statistics:
+    Dangling Rs removed:          3
+    Merged Parallel Rs:           0
+    Mfactor Merged devices:       0
+    Rs shorted by min_res option: 6
+    Merged Parallel Self Caps:    0
+    CCs filtered by minC option:  3
+    Shorted Incomplete Nets:      0
+ Output statistics:
+    R: 11
+    C: 28
+    L: 0
+
+ Peak memory:	249 MB
+
+ Messages:
+    INFO (EXTQRCOUT-222125): Input Setup:    -lib: ece6443lib -cell: inv_x2 -view: layout 
+    
+    INFO (EXTQRCOUT-222100): Output initialization complete. Netlisting begins ...
+    
+    INFO (EXTQRCOUT-222030): Processing device mappings
+    File location: /ip/cadence/gpdk045/gpdk045_v_6_0/pvs/extview.rul
+    
+    WARNING (EXTQRCOUT-222304): Duplicate extLayer found in extview.rul: pdiff_conn
+    	Ignoring this entry
+    
+    WARNING (EXTQRCOUT-222304): Duplicate extLayer found in extview.rul: ndiff_conn
+    	Ignoring this entry
+    
+    INFO (EXTQRCOUT-222031): Device mapping completed successfully
+    
+    INFO (EXTQRCOUT-222007): in total: 122 rcx_nodes and 4 lvs_nets
+    
+    INFO (EXTQRCOUT-222015): found 4 ports in current Design
+    
+    WARNING (EXTQRCOUT-222305): Cannot find dfII layer mapping for extLayer: mwires
+    
+    INFO (EXTQRCOUT-222017): in total: 0 nets are removed
+    
+    INFO (EXTQRCOUT-222018): summary of job:
+    mos:2
+    dio:0
+    res:0
+    bjt:0
+    cap:0
+    gen:0
+    bbox:0
+    nhcell:0
+    pcap:28
+    pres:11
+    pind: 0
+    npmutind: 0
+    
+    INFO (EXTQRCOUT-222024): Summary for ece6443lib/inv_x2/sv_extracted
+    
+    instance count totals:
+    
+                     lib                cell                view               total
+                 gpdk045               nmos1v              ivpcell                 1
+                 gpdk045               pmos1v              ivpcell                 1
+                   Total                                                           2
+    
+-------------------------------------------------------------------------------------
+
+INFO (LBRCXM-920): Host name and peak memory report
+ Host Name:                    ecs04.poly.edu
+ Peak memory used:             249 MB (sampled at 15s intervals)
+
+INFO (LBRCXM-702): Run ended: Wed Apr 29 20:46:01 2026
+
+
+INFO (LBRCXM-805): Quantus run took:  5s user, 6s sys, 17s elapsed
+
+
+INFO (LBRCXM-708): *****  Quantus terminated normally  *****
+
+

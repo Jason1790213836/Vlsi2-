@@ -1,0 +1,9 @@
+(
+  ( nil 
+    repList  " auCdl schematic"
+    stopList " auCdl"
+  )
+  ( model
+    ("ece6443lib/inv_x2/schematic" "inv_x2")
+  )
+)

@@ -1,0 +1,15 @@
+
+
+vuipreRcxFormTable = '(
+	runName  "inv_x2"
+	tech  "gpdk045_pvs"
+	netProp  5
+	instProp  6
+	devProp  7
+	quickRun  nil
+	runDir  "/home/lx2349/vlsi2/run_lvs2/svdb"
+	mapFile  ""
+	assuraTech  "/ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib"
+)
+
+

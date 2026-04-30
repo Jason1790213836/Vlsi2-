@@ -1,0 +1,68 @@
+# This PVS File Index Registry was created automatically
+# Do not attempt to modify this file as any change may lead
+# to PVS Debug Environment malfunction.
+# 
+"Run Directory" internal none /home/lx2349/vlsi2/run_drc2
+"Current Directory" internal none /home/lx2349/vlsi2
+"Cadence Directory" internal none /home/lx2349/vlsi2/.cadence/
+"Job Signature" internal none IPVS_1777507691_46394
+"PVS Job Mode" internal none drc
+"GUI Flow" internal none virtuoso6
+"GUI Preset" internal none /home/lx2349/vlsi2/run_drc2/.preset.autosave
+"Technology Name" internal none "gpdk045_pvs"
+"Technology RuleSet" internal none "default"
+"Technology Mapping File" internal none /ip/cadence/gpdk045/gpdk045_v_6_0/pvtech.lib
+"Technology Rule File" internal none /home/lx2349/vlsi2/run_drc2/.technology.rul
+"PVS Version" internal none 23.11-s036
+"Binary Name" internal none pvsgui
+"PVS Build Date" internal none "Wed Jan 17 18:11:41 PST 2024"
+"PVS Job Time" internal none 1777507693
+"DFII version" internal none 6.1.8.0
+"Run Directory" internal none /home/lx2349/vlsi2/run_drc2
+"PVS Job Mode" internal none drc
+"Rule File" input text /home/lx2349/vlsi2/run_drc2/.technology.rul
+"Cell Tree" output text /home/lx2349/vlsi2/run_drc2/cell_tree.txt
+"Layout Scale" internal none 0.0005
+"Layout TechLib" internal none ece6443lib
+"Layout Library Name" internal none ece6443lib
+"Layout Cell Name" internal none inv_x2
+"Layout View Name" internal none layout
+"Layout ConvertPin" internal text geometry
+"Layout HierDepth" internal none 32
+"Layout MaxVertices" internal none 2048
+"Layout Top Cell" internal none inv_x2
+"Layout GDSII" input none /home/lx2349/vlsi2/run_drc2/inv_x2.gds
+"Intermediate GDSII File" output none /home/lx2349/vlsi2/run_drc2/inv_x2.gds
+"Intermediate GDSII File creation Errors" output none /home/lx2349/vlsi2/run_drc2/PIPO1.LOG
+"Intermediate OASIS File creation Errors" output none /home/lx2349/vlsi2/run_drc2/PIPO1.LOG
+"Layout ReplaceBusBitChar" input none nil
+"Layout NoConvertHalfWidthPath" input none nil
+"Layout FlattenPCells" input none nil
+"Job Signature" internal none IPVS_1777507691_46394
+"Do not check rules files before run" internal none ENABLED
+"Control File" input text /home/lx2349/vlsi2/run_drc2/pvsdrcctl
+"Force to use Pegasus licences" input none ENABLED
+"PVS Job Log" log text /home/lx2349/vlsi2/run_drc2/pvsuidrc.log
+"PIPO Setup File I" internal text  /home/lx2349/vlsi2/run_drc2/pipo1.setup
+"PIPO Log I" log text  /home/lx2349/vlsi2/run_drc2/PIPO1.LOG
+"PIPO Output I" internal text  /home/lx2349/vlsi2/run_drc2/PIPO1.OUT
+"Input Layout" input none OA: ece6443lib inv_x2 layout
+"Output Layout Cellmap I" internal text /home/lx2349/vlsi2/run_drc2/lay_cellMap.txt
+"PVS Version" internal none 23.11-s036
+"Binary Name" internal none pvsvirt
+"PVS Build Date" internal none "Wed Jan 17 18:11:41 PST 2024"
+"PVS Job Time" internal none 1777507694
+"Cell Tree" output text /home/lx2349/vlsi2/run_drc2/cell_tree.txt
+"PVS Job Mode" internal none drc
+"Rule File" input text /home/lx2349/vlsi2/run_drc2/.technology.rul
+"Layout GDSII" input none /home/lx2349/vlsi2/run_drc2/inv_x2.gds
+"DRC Summary" output text /home/lx2349/vlsi2/run_drc2/inv_x2.sum
+"ASCII DRC Report Database" output rdb /home/lx2349/vlsi2/run_drc2/inv_x2.drc_errors.ascii
+"Run Directory" internal none /home/lx2349/vlsi2/run_drc2/
+"UI Data" internal none ENABLED
+"PVS Mode Info" internal none FFBCLDEMBEICIIAPCAPONCEIHDAFKMMG
+"Report MaxResults" internal none 1000
+"PVS Version" internal none 23.11-s036
+"Binary Name" internal none pvs
+"PVS Build Date" internal none "Wed Jan 17 18:11:41 PST 2024"
+"PVS Job Time" internal none 1777507694
