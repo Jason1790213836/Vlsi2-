@@ -7,13 +7,13 @@ Report : timing
         -max_paths 1
 Design : bist
 Version: W-2024.09-SP5-5
-Date   : Thu Apr 30 01:54:05 2026
+Date   : Thu Apr 30 02:08:12 2026
 ****************************************
 
 Operating Conditions: ss0p75v125c   Library: saed32lvt_ss0p75v125c
 Wire Load Model Mode: enclosed
 
-  Startpoint: u_sram/addr_reg_reg[1]
+  Startpoint: u_sram/addr_reg_reg[3]
               (rising edge-triggered flip-flop clocked by clk)
   Endpoint: fail_reg (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
@@ -29,48 +29,47 @@ Wire Load Model Mode: enclosed
   --------------------------------------------------------------------------
   clock clk (rise edge)                                   0.00       0.00
   clock network delay (ideal)                             0.01       0.01
-  u_sram/addr_reg_reg[1]/CLK (DFFX1_LVT)                  0.00       0.01 r
-  u_sram/addr_reg_reg[1]/QN (DFFX1_LVT)                   0.15       0.16 r
-  u_sram/U777/Y (NOR2X0_LVT)                              0.10       0.26 f
-  u_sram/U36/Y (NAND2X0_LVT)                              0.09       0.34 r
-  u_sram/U390/Y (INVX1_LVT)                               0.07       0.42 f
-  u_sram/U13/Y (AOI22X1_LVT)                              0.15       0.56 r
-  u_sram/U1098/Y (NAND3X0_LVT)                            0.05       0.61 f
-  u_sram/U1097/Y (NOR4X1_LVT)                             0.16       0.77 r
-  u_sram/U831/Y (OA22X1_LVT)                              0.07       0.84 r
-  u_sram/U832/Y (OAI221X1_LVT)                            0.09       0.94 f
-  u_sram/U9/Y (AND2X1_LVT)                                0.06       1.00 f
-  u_sram/ramout[0] (sram)                                 0.00       1.00 f
-  u_comparator/ramout[0] (comparator)                     0.00       1.00 f
-  u_comparator/U3/Y (INVX1_LVT)                           0.04       1.03 r
-  u_comparator/U39/Y (OR2X1_LVT)                          0.07       1.10 r
-  u_comparator/U40/Y (OR2X1_LVT)                          0.07       1.17 r
-  u_comparator/U41/Y (AO221X1_LVT)                        0.10       1.27 r
-  u_comparator/U42/Y (NAND3X0_LVT)                        0.05       1.32 f
-  u_comparator/U43/Y (NAND3X0_LVT)                        0.06       1.39 r
-  u_comparator/U44/Y (NAND3X0_LVT)                        0.05       1.44 f
-  u_comparator/U45/Y (AND2X1_LVT)                         0.08       1.52 f
-  u_comparator/U46/Y (AOI22X1_LVT)                        0.11       1.63 r
-  u_comparator/U47/Y (OAI21X1_LVT)                        0.12       1.75 f
-  u_comparator/U14/Y (OR2X1_LVT)                          0.07       1.82 f
-  u_comparator/U16/Y (INVX1_LVT)                          0.03       1.85 r
-  u_comparator/eq (comparator)                            0.00       1.85 r
-  U9/Y (INVX1_LVT)                                        0.02       1.87 f
-  U7/Y (AND4X1_LVT)                                       0.10       1.97 f
-  fail_reg/D (DFFX1_LVT)                                  0.00       1.97 f
-  data arrival time                                                  1.97
+  u_sram/addr_reg_reg[3]/CLK (DFFX1_LVT)                  0.00       0.01 r
+  u_sram/addr_reg_reg[3]/Q (DFFX1_LVT)                    0.17       0.18 f
+  u_sram/U462/Y (AND2X1_LVT)                              0.08       0.25 f
+  u_sram/U464/Y (AND2X1_LVT)                              0.08       0.33 f
+  u_sram/U310/Y (INVX1_LVT)                               0.04       0.37 r
+  u_sram/U311/Y (INVX1_LVT)                               0.07       0.43 f
+  u_sram/U917/Y (NAND2X0_LVT)                             0.08       0.51 r
+  u_sram/U916/Y (AND4X1_LVT)                              0.10       0.61 r
+  u_sram/U900/Y (NAND4X0_LVT)                             0.05       0.65 f
+  u_sram/U899/Y (NAND2X0_LVT)                             0.07       0.72 r
+  u_sram/U898/Y (NAND4X0_LVT)                             0.06       0.78 f
+  u_sram/U1330/Y (AND2X1_LVT)                             0.08       0.86 f
+  u_sram/ramout[1] (sram)                                 0.00       0.86 f
+  u_comparator/ramout[1] (comparator)                     0.00       0.86 f
+  u_comparator/U8/Y (NAND2X0_LVT)                         0.09       0.96 r
+  u_comparator/U52/Y (NAND3X0_LVT)                        0.05       1.01 f
+  u_comparator/U53/Y (NAND2X0_LVT)                        0.08       1.09 r
+  u_comparator/U56/Y (OA221X1_LVT)                        0.10       1.18 r
+  u_comparator/U41/Y (NAND2X0_LVT)                        0.04       1.22 f
+  u_comparator/U44/Y (NAND3X0_LVT)                        0.05       1.28 r
+  u_comparator/U58/Y (NAND4X0_LVT)                        0.05       1.33 f
+  u_comparator/U36/Y (NAND3X0_LVT)                        0.08       1.41 r
+  u_comparator/U35/Y (INVX1_LVT)                          0.02       1.43 f
+  u_comparator/U33/Y (AND2X1_LVT)                         0.07       1.49 f
+  u_comparator/eq (comparator)                            0.00       1.49 f
+  U10/Y (INVX1_LVT)                                       0.03       1.52 r
+  U9/Y (AND2X1_LVT)                                       0.05       1.57 r
+  fail_reg/D (DFFX1_LVT)                                  0.00       1.57 r
+  data arrival time                                                  1.57
 
-  clock clk (rise edge)                                   2.10       2.10
-  clock network delay (ideal)                             0.01       2.11
-  clock uncertainty                                      -0.01       2.10
-  fail_reg/CLK (DFFX1_LVT)                                0.00       2.10 r
-  library setup time                                     -0.07       2.03
-  data required time                                                 2.03
+  clock clk (rise edge)                                   1.63       1.63
+  clock network delay (ideal)                             0.01       1.64
+  clock uncertainty                                      -0.01       1.63
+  fail_reg/CLK (DFFX1_LVT)                                0.00       1.63 r
+  library setup time                                     -0.05       1.58
+  data required time                                                 1.58
   --------------------------------------------------------------------------
-  data required time                                                 2.03
-  data arrival time                                                 -1.97
+  data required time                                                 1.58
+  data arrival time                                                 -1.57
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.06
+  slack (MET)                                                        0.00
 
 
-1
+1`

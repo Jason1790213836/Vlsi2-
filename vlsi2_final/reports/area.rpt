@@ -3,7 +3,7 @@
 Report : area
 Design : bist
 Version: W-2024.09-SP5-5
-Date   : Thu Apr 30 01:54:05 2026
+Date   : Thu Apr 30 02:08:12 2026
 ****************************************
 
 Library(s) Used:
@@ -11,20 +11,20 @@ Library(s) Used:
     saed32lvt_ss0p75v125c (File: /home/lx2349/vlsi2/vlsi2_final/DCNXT_2021.06/ref/DBs/saed32lvt_ss0p75v125c.db)
 
 Number of ports:                          179
-Number of nets:                          2005
-Number of cells:                         1827
-Number of combinational cells:           1284
+Number of nets:                          2218
+Number of cells:                         2040
+Number of combinational cells:           1497
 Number of sequential cells:               531
 Number of macros/black boxes:               0
-Number of buf/inv:                        221
-Number of references:                      12
+Number of buf/inv:                        227
+Number of references:                      13
 
-Combinational area:               3024.567747
-Buf/Inv area:                      332.166216
-Noncombinational area:            3510.237042
+Combinational area:               3380.115221
+Buf/Inv area:                      342.077831
+Noncombinational area:            3511.253618
 Macro/Black Box area:                0.000000
-Net Interconnect area:            1467.669532
+Net Interconnect area:            1467.009481
 
-Total cell area:                  6534.804789
-Total area:                       8002.474321
+Total cell area:                  6891.368839
+Total area:                       8358.378320
 1
