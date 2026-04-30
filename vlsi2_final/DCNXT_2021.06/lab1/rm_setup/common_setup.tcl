@@ -1,0 +1,8 @@
+set PDK_DIR "/ip/synopsys/saed32/v02_2024"
+set ADDITIONAL_SEARCH_PATH "$PDK_DIR/lib/stdcell_lvt/db_nldm $PDK_DIR/tech/tf $PDK_DIR/tech/starrc/max $PDK_DIR/tech/starrc $PDK_DIR/temporary_ndm ./rtl ./scripts"
+set NDM_DESIGN_LIB "bist.dlib"
+set TARGET_LIBRARY_FILES "saed32lvt_ss0p75v125c.db"
+set NDM_REFERENCE_LIBS "saed32_lvt.ndm"
+set TECH_FILE "saed32nm_1p9m.tf"
+set TLUPLUS_MAX_FILE "saed32nm_1p9m_Cmax.tluplus"
+set MAP_FILE "saed32nm_tf_itf_tluplus.map"

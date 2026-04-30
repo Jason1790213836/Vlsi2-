@@ -1,0 +1,54 @@
+Warning: Can't read link_library file 'saed32lvt_ss0p75v125c.db'. (UID-3)
+Error: Could not read the following target libraries:
+saed32lvt_ss0p75v125c.db 
+ (UIO-3)
+Module: DW01_inc_width10, Ports: 20, Input: 10, Output: 10, Inout: 0
+Module: DW01_inc_width10, Registers: 0, Async set/reset: 0, Sync set/reset: 0
+Warning: Can't read link_library file 'saed32lvt_ss0p75v125c.db'. (UID-3)
+Module: DW01_dec_width10, Ports: 20, Input: 10, Output: 10, Inout: 0
+Module: DW01_dec_width10, Registers: 0, Async set/reset: 0, Sync set/reset: 0
+Warning: Can't read link_library file 'saed32lvt_ss0p75v125c.db'. (UID-3)
+Module: DW01_cmp2_width8, Ports: 20, Input: 18, Output: 2, Inout: 0
+Module: DW01_cmp2_width8, Registers: 0, Async set/reset: 0, Sync set/reset: 0
+Warning: Can't read link_library file 'saed32lvt_ss0p75v125c.db'. (UID-3)
+Module: DW01_cmp6_width8, Ports: 23, Input: 17, Output: 6, Inout: 0
+Module: DW01_cmp6_width8, Registers: 0, Async set/reset: 0, Sync set/reset: 0
+Warning: Can't read link_library file 'saed32lvt_ss0p75v125c.db'. (UID-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'bist' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : bist
+Version: W-2024.09-SP5-5
+Date   : Thu Apr 30 01:37:24 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: gtech
+Wire Load Model Mode: top
+
+  Startpoint: u_sram/ram_reg[0][7]
+              (rising edge-triggered flip-flop)
+  Endpoint: dataout[7] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  u_sram/ram_reg[0][7]/clocked_on (**SEQGEN**)            0.00       0.00 r
+  u_sram/ram_reg[0][7]/Q (**SEQGEN**)                     0.00       0.00 r
+  u_sram/C2184/Z_0 (*MUX_OP_64_6_8)                       0.00       0.00 r
+  u_sram/C2183/Z_7 (*SELECT_OP_2.8_2.1_8)                 0.00       0.00 r
+  u_sram/ramout[7] (sram)                                 0.00       0.00 r
+  dataout[7] (out)                                        0.00       0.00 r
+  data arrival time                                                  0.00
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

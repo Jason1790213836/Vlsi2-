@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : bist
+Version: W-2024.09-SP5-5
+Date   : Thu Apr 30 01:37:24 2026
+****************************************
+
+Library(s) Used:
+
+    gtech (File: /eda/synopsys/syn/W-2024.09-SP5-5/libraries/syn/gtech.db)
+
+Number of ports:                          355
+Number of nets:                          1445
+Number of cells:                          945
+Number of combinational cells:            365
+Number of sequential cells:               549
+Number of macros/black boxes:               0
+Number of buf/inv:                         84
+Number of references:                      12
+
+Combinational area:                  0.000000
+Buf/Inv area:                        0.000000
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                     0.000000
+Total area:                 undefined
+
+Information: This design contains unmapped logic. (RPT-7)
+1
