@@ -1,0 +1,154 @@
+0
+26
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/eda/synopsys/vcs/Y-2026.03/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /eda/synopsys/vcs/Y-2026.03/linux64/lib/libvirsim.so /eda/synopsys/vcs/Y-2026.03/linux64/lib/liberrorinf.so /eda/synopsys/vcs/Y-2026.03/linux64/lib/libsnpsmalloc.so /eda/synopsys/vcs/Y-2026.03/linux64/lib/libvfs.so
+-Mout=sim
+-Msaverestoreobj=/eda/synopsys/vcs/Y-2026.03/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/eda/synopsys/vcs/Y-2026.03/include
+-Mxllcflags=
+-Xhdlxmropt
+-gen_obj
+-o sim
+-picarchive
+-sverilog
+/eda/synopsys/vcs/Y-2026.03/linux64/bin/vcs1fe
+sim
+lfsr.sv
+lfsr_tb_1.sv
+112
+__MODULES_SHARE_PATH=/eda/siemens/Calibre/aok_cal_2026.1_35.25/bin:2
+__MODULES_SHARE_MANPATH=:1
+__MODULES_LMINIT=module use --append /usr/share/Modules/modulefiles:module use --append /etc/modulefiles:module use --append /usr/share/modulefiles
+_LMFILES_=/home/shared/modules/siemens:/home/shared/modules/cadence/IC251:/home/shared/modules/synopsys
+XPEDION=/eda/keysight/goldengate
+XMODIFIERS=@im=ibus
+XDG_SESSION_TYPE=x11
+XDG_SESSION_CLASS=user
+XDG_RUNTIME_DIR=/run/user/4531049
+XDG_MENU_PREFIX=gnome-
+XDG_CURRENT_DESKTOP=GNOME
+XDG_CONFIG_DIRS=/etc/fastx/xdg:/etc/xdg
+XAUTHORITY=/home/lx2349/.fastx_server/ecs05.poly.edu/sessions/FX3-0b7b9e0789564d6fb80baaa89abc1687/authority
+WV_HOME=/eda/synopsys/wv/Y-2026.03-1
+VTE_VERSION=6402
+VMR_MODE_FLAG=32
+VERISIUM_DEBUG_ROOT=/eda/cadence/VERISIUMDEBUG2603
+VERISIUM=/eda/cadence/VAPPS2603
+VERDI_HOME=/eda/synopsys/verdi/Y-2026.03
+VENDOR=unknown
+VC_STATIC_HOME=/eda/synopsys/vc_static/Y-2026.03-SP1
+VCS_TARGET_ARCH=amd64
+VCS_PYTHON3=/eda/synopsys/vcs/Y-2026.03/linux64/bin/Python3/bin/python3
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_INTERNAL_CONVERTEDLIBS=
+VCS_HOME=/eda/synopsys/vcs/Y-2026.03
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USE_CALIBRE_VCO=aok
+UNAME=/bin/uname
+TOOL_HOME=/eda/synopsys/vcs/Y-2026.03/linux64
+S_COLORS=auto
+SYN_HOME=/eda/synopsys/syn/Y-2026.03
+SYNOPSYS_LC_ROOT=/eda/synopsys/lc/Y-2026.03
+SUBSTRATESTORMSITE=/eda/cadence/IC251/share/sna/etc/cdslib/substrateLib
+SUBSTRATESTORMHOME=/eda/cadence/IC251
+STARRC_HOME=/eda/synopsys/starrc/Y-2026.03-SP1
+SSH_CLIENT=10.27.6.108 56865 22
+SSH_AUTH_SOCK=/tmp/FastX-0b7b9e0789564d6fb80baaa89abc1687/agent.3437073
+SNPS_VCS_PYTHON3=/eda/synopsys/vcs/Y-2026.03/linux64/bin/Python3/bin/python3
+SNPS_VCS_CLANG_PATH=/eda/synopsys/vcs/Y-2026.03/linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3437140,unix/unix:/tmp/.ICE-unix/3437140
+SELINUX_USE_CURRENT_RANGE=
+SELINUX_ROLE_REQUESTED=
+SELINUX_LEVEL_REQUESTED=
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+SCL_RECONNECT_STATUS_CHECK=1
+SCL_RECONNECT_QUEUE_RESET=5
+SALT_LICENSE_SERVER=1717@pyke.poly.edu
+RTL_HOME=/eda/synopsys/rtla/Y-2026.03-SP1
+QUESTASIM_HOME=/eda/siemens/Questasim/questasim/linux_x86_64
+QT_IM_MODULE=ibus
+PRIME_HOME=/eda/synopsys/prime/Y-2026.03
+PORT=3300
+PIPEWIRE_REMOTE=pipewire-fastx-0b7b9e0789564d6fb80baaa89abc1687
+OVA_UUM=0
+OSTYPE=linux
+OPENSSL_MODULES=/eda/synopsys/vcs/Y-2026.03/linux64/lib/openssl/3.5.0/ossl-modules
+OA_HOME=/eda/cadence/IC251/oa_v22.62.020
+MOTD_SHOWN=pam
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MMSIM=/eda/cadence/SPECTRE251
+MGLS_LICENSE_FILE=1717@pyke.poly.edu
+MGC_HOME=/eda/siemens/Calibre/aok_cal_2026.1_35.25
+MGC_FDI_OA_VERSION=22.62
+MATLAB_USE_USERPATH=1
+LOADEDMODULES=/home/shared/modules/siemens:/home/shared/modules/cadence/IC251:/home/shared/modules/synopsys
+LIBERATE_LORDER=TOKENS
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+KRB5CCNAME=KCM:
+KEY_FILE=ecs05_poly_edu
+ICV_HOME_DIR=/eda/synopsys/icvalidator/Y-2026.03-SP1
+ICC2_HOME=/eda/synopsys/icc2/Y-2026.03
+HSP_HOME=/eda/synopsys/hspice/Y-2026.03-1/hspice
+HPEESOF_DIR=/eda/ads
+HOSTTYPE=x86_64-linux
+GROUP=lx2349
+GNOME_TERMINAL_SERVICE=:1.65
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/42feb12d_5d69_4330_be64_254cc623faf9
+GDK_BACKEND=x11
+FX_VAR_DIR=/var/fastx
+FX_ROOT_DIR=/usr/lib/fastx/5
+FX_LOCAL_DIR=/var/fastx-local
+FX_CONFIG_DIR=/etc/fastx
+FASTX_SESSION_ID=0b7b9e0789564d6fb80baaa89abc1687
+FASTX_SESSION_DIR=/home/lx2349/.fastx_server/ecs05.poly.edu/sessions/FX3-0b7b9e0789564d6fb80baaa89abc1687
+EMXHOME=/eda/cadence/EMX20252
+DEBUGINFOD_IMA_CERT_PATH=/etc/keys/ima:
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-Ull4WpBqmt,guid=1724908540110752691f156b6a9e2df8
+COLORTERM=truecolor
+CLS_CDSD_COMPATIBILITY_LOCKING=NO
+CERT_FILE=ecs05_poly_edu_cert.cer
+CDS_Netlisting_Mode=Analog
+CDS_LOAD_ENV=CSF
+CDS_LIC_FILE=5281@pyke.poly.edu:/opt/cadence/License/cadence.lic
+CDS_HOME=/eda/cadence/IC251
+CDS_AUTO_64BIT=ALL
+CDSHOME=/eda/cadence/IC251
+CDK_DIR=/eda/cadence/local/ncsu-cdk-1.6.0.beta
+CC_HOME=/eda/synopsys/customcompiler/Y-2026.03-1
+CA_FILE=
+CATAPULT_HOME=/eda/siemens/Catapult/Mgc_home
+CALIBRE_HOME=/eda/siemens/Calibre/aok_cal_2026.1_35.25
+ASSURA=/eda/cadence/ASSURA_IC251
+0
+0
+3
+1772202875 /eda/synopsys/vcs/Y-2026.03/linux64/packages/snps_msv_nettype_pkg/AN.DB
+1788754423 lfsr_tb_1.sv
+1788754606 lfsr.sv
+4
+1772168022 /eda/synopsys/vcs/Y-2026.03/linux64/lib/libvirsim.so
+1772166263 /eda/synopsys/vcs/Y-2026.03/linux64/lib/liberrorinf.so
+1772166260 /eda/synopsys/vcs/Y-2026.03/linux64/lib/libsnpsmalloc.so
+1772166251 /eda/synopsys/vcs/Y-2026.03/linux64/lib/libvfs.so
+1788754612 sim.daidir
+-1 partitionlib
