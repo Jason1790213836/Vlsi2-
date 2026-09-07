@@ -9,7 +9,6 @@ module lfsr_tb_1;
     logic [6:0] seed;
     logic [6:0] lfsr_out;
 
-    // Instantiate DUT
     lfsr dut (
         .clk(clk),
         .reset(reset),
@@ -19,7 +18,6 @@ module lfsr_tb_1;
         .lfsr_out(lfsr_out)
     );
 
-    // Generate clock
     initial begin
         clk = 0;
         forever #5 clk = ~clk;
@@ -27,21 +25,19 @@ module lfsr_tb_1;
 
     initial begin
 
-        // Initial values
-        reset = 0;
-        load = 0;
+        reset  = 0;
+        load   = 0;
         enable = 0;
-        seed = 7'b1100111;
+        seed   = 7'b1100111;
 
-
-        // -------------------------
-        // Test 1: reset
-        // -------------------------
+        // ----------------
+        // Test reset
+        // ----------------
         @(negedge clk);
         reset = 1;
 
-        @(posedge clk);
-        #1;
+        @(posedge clk);   // DUT executes reset here
+        @(negedge clk);   // check safely afterwards
 
         if (lfsr_out !== 7'b1111111) begin
             $display("@@@FAIL");
@@ -49,16 +45,16 @@ module lfsr_tb_1;
         end
 
 
-        // -------------------------
-        // Test 2: load seed
-        // -------------------------
-        @(negedge clk);
+        // ----------------
+        // Test load
+        // ----------------
         reset = 0;
         load = 1;
+        enable = 0;
         seed = 7'b1100111;
 
         @(posedge clk);
-        #1;
+        @(negedge clk);
 
         if (lfsr_out !== 7'b1100111) begin
             $display("@@@FAIL");
@@ -66,15 +62,14 @@ module lfsr_tb_1;
         end
 
 
-        // -------------------------
-        // Test 3: first LFSR shift
-        // -------------------------
-        @(negedge clk);
+        // ----------------
+        // Test first shift
+        // ----------------
         load = 0;
         enable = 1;
 
         @(posedge clk);
-        #1;
+        @(negedge clk);
 
         if (lfsr_out !== 7'b1001110) begin
             $display("@@@FAIL");
@@ -82,11 +77,11 @@ module lfsr_tb_1;
         end
 
 
-        // -------------------------
-        // Test 4: second shift
-        // -------------------------
+        // ----------------
+        // Test second shift
+        // ----------------
         @(posedge clk);
-        #1;
+        @(negedge clk);
 
         if (lfsr_out !== 7'b0011101) begin
             $display("@@@FAIL");
@@ -94,7 +89,6 @@ module lfsr_tb_1;
         end
 
 
-        // Everything passed
         $display("@@@PASS");
         $finish;
 
